@@ -54,6 +54,8 @@
         </div>
       </div>
 
+<!-- Main ingredient search heading and box       -->
+
       <div id = "main-ingredient-search" class="container-fluid"> 
         <h2 id="user-input-heading" class="mt-1 h3 form-label">
         Search for a recipe:</h2>
@@ -73,11 +75,14 @@
         </div>
       </div>
 
-      
+
       <div class="container-fluid" style="max-width: 1400px">
         <div class="row">
           <aside class="col-lg-3 pb-3">
-                     
+
+<!-- User input elements to further refine recipe search       -->
+            <form>
+               
 <!-- Intolerance checkboxes -->
 
           <div class="checkboxes">
@@ -154,92 +159,178 @@
                             Wheat
                           </label>
                         </div>
-                      </div>
-                      <!-- Diet dropdown -->
-                      <div class="dropdown-diet">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          </div>
+<!-- Diet dropdown -->
+          <div class="dropdown-diet">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Diet
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                          <button class="dropdown-item" type="button">Vegetarian</button>
-                          <button class="dropdown-item" type="button">Vegan</button>
-                          <button class="dropdown-item" type="button">Pescetarian</button>
-                          <button class="dropdown-item" type="button">Gluten Free</button>
-                          <button class="dropdown-item" type="button">Paleo</button>
-                          <button class="dropdown-item" type="button">Ketogenic</button>
-                          <button class="dropdown-item" type="button">Lacto-Vegetarian</button>
-                          <button class="dropdown-item" type="button">Ovo-Vegetarian
-                          </button>
-                          <button class="dropdown-item" type="button">Primal</button>
-                          <button class="dropdown-item" type="button">Low FODMAP</button>
-                          <button class="dropdown-item" type="button">Whole30</button>
-                        </div>
-                      </div>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Vegetarian</button>
+                <button class="dropdown-item" type="button">Vegan</button>
+                <button class="dropdown-item" type="button">Pescetarian</button>
+                <button class="dropdown-item" type="button">Gluten Free</button>
+                <button class="dropdown-item" type="button">Paleo</button>
+                <button class="dropdown-item" type="button">Ketogenic</button>
+                <button class="dropdown-item" type="button">Lacto-Vegetarian</button>
+                <button class="dropdown-item" type="button">Ovo-Vegetarian
+                </button>
+                <button class="dropdown-item" type="button">Primal</button>
+                <button class="dropdown-item" type="button">Low FODMAP</button>
+                <button class="dropdown-item" type="button">Whole30</button>
+            </div>
+          </div>
 
 <!-- Cuisine dropdown -->
-                      <div class="dropdown-cuisine">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="dropdown-cuisine">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Cuisine
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                          <button class="dropdown-item" type="button">African</button>
-                          <button class="dropdown-item" type="button">American</button>
-                          <button class="dropdown-item" type="button">British</button>
-                          <button class="dropdown-item" type="button">Cajun</button>
-                          <button class="dropdown-item" type="button">Caribbean</button>
-                          <button class="dropdown-item" type="button">Chinese</button>
-                          <button class="dropdown-item" type="button">Eastern European</button>
-                          <button class="dropdown-item" type="button">European</button>
-                          <button class="dropdown-item" type="button">French</button>
-                          <button class="dropdown-item" type="button">German</button>
-                          <button class="dropdown-item" type="button">Greek</button>
-                          <button class="dropdown-item" type="button">Indian</button>
-                          <button class="dropdown-item" type="button">Irish</button>
-                          <button class="dropdown-item" type="button">Italian</button>
-                          <button class="dropdown-item" type="button">Japanese</button>
-                          <button class="dropdown-item" type="button">Jewish</button>
-                          <button class="dropdown-item" type="button">Korean</button>
-                          <button class="dropdown-item" type="button">Latin American</button>
-                          <button class="dropdown-item" type="button">Mediterranean</button>
-                          <button class="dropdown-item" type="button">Mexican</button>
-                          <button class="dropdown-item" type="button">Middle Eastern</button>
-                          <button class="dropdown-item" type="button">Nordic</button>
-                          <button class="dropdown-item" type="button">Southern</button>
-                          <button class="dropdown-item" type="button">Spanish</button>
-                          <button class="dropdown-item" type="button">Thai</button>
-                          <button class="dropdown-item" type="button">Vietnamese</button>
-                        </div>
-                      </div>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" type="button">African</button>
+              <button class="dropdown-item" type="button">American</button>
+              <button class="dropdown-item" type="button">British</button>
+              <button class="dropdown-item" type="button">Cajun</button>
+              <button class="dropdown-item" type="button">Caribbean</button>
+              <button class="dropdown-item" type="button">Chinese</button>
+              <button class="dropdown-item" type="button">Eastern European</button>
+              <button class="dropdown-item" type="button">European</button>
+              <button class="dropdown-item" type="button">French</button>
+              <button class="dropdown-item" type="button">German</button>
+              <button class="dropdown-item" type="button">Greek</button>
+              <button class="dropdown-item" type="button">Indian</button>
+              <button class="dropdown-item" type="button">Irish</button>
+              <button class="dropdown-item" type="button">Italian</button>
+              <button class="dropdown-item" type="button">Japanese</button>
+              <button class="dropdown-item" type="button">Jewish</button>
+              <button class="dropdown-item" type="button">Korean</button>
+              <button class="dropdown-item" type="button">Latin American</button>
+              <button class="dropdown-item" type="button">Mediterranean</button>
+              <button class="dropdown-item" type="button">Mexican</button>
+              <button class="dropdown-item" type="button">Middle Eastern</button>
+              <button class="dropdown-item" type="button">Nordic</button>
+              <button class="dropdown-item" type="button">Southern</button>
+              <button class="dropdown-item" type="button">Spanish</button>
+              <button class="dropdown-item" type="button">Thai</button>
+              <button class="dropdown-item" type="button">Vietnamese</button>
+            </div>
+          </div>
 
-                      <div class="form-group">
+          <div class="form-group">
                         <label for="time-to-prep">Time to prepare meal (in minutes):</label>
                         <input type="number" class="form-control" id="time-to-prep">
                         
-                      </div>
-                    </div>
-
-
-      </div>
-          
-
-                  <!-- <div class="input-group-append">
-                    <button
-                      type="submit"
-                      class="btn search-button"
-                      id="search-button"
-                      aria-label="submit search"
-                    >
-                      Search
-                    </button> -->
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
           </aside>
-
           <div class="col-lg-9 pb-3">
             <section
               id="recipe-results"
               class="mt-3"
               role="region"
               aria-live="polite"
-            ></section>
+            >
+              <div class="container-fluid recipes">
+                <h2>Recipes</h2>
+              </div>
+              <div class="row" id="recipe-results">
+                <!-- Card 1 -->
+                <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+                  <div class="card recipe-1">
+                    <img
+                      src=""
+                      class="card-img"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h2 class="card-title">Recipe name</h2>
+                      <p class="card-text">
+                        Price per serving:<br>
+                        Time to prepare (minutes):
+                      </p>
+                      <a
+                        href=""
+                        id=""
+                        >Recipe link</a
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+                  <div class="card recipe-2">
+                    <img
+                      src=""
+                      class="card-img"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h2 class="card-title">Recipe name</h2>
+                      <p class="card-text">
+                        Price per serving:<br>
+                        Time to prepare (minutes):
+                      </p>
+                      <a
+                        href=""
+                        id=""
+                        >Recipe link</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+                  <div class="card recipe-3">
+                    <img
+                      src=""
+                      class="card-img"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h2 class="card-title">Recipe name</h2>
+                      <p class="card-text">
+                        Price per serving:<br>
+                        Time to prepare (minutes):
+                      </p>
+                      <a
+                        href=""
+                        id=""
+                        >Recipe link</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
+                  <div class="card recipe-4">
+                    <img
+                      src=""
+                      class="card-img"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h2 class="card-title">Recipe name</h2>
+                      <p class="card-text">
+                        Price per serving:<br>
+                        Time to prepare (minutes):
+                      </p>
+                      <a
+                        href=""
+                        id=""
+                        >Recipe link</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary" type="submit">Previous</button>
+              <button class="btn btn-primary" type="submit">Next</button>
+          </section>
+        </div>
+      </div>
+          
   </body>
   <script src="assets/script.js"></script>
   
