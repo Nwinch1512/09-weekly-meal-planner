@@ -1,6 +1,7 @@
 // Bring in HTML elements here
-let dietDropdownBtn = $(".dropdown-diet");
+let dietDropdownBtn = $("button.dropdown-diet");
 let timeToPrepInputEl = $("#time-to-prep");
+console.log(timeToPrepInputEl.val());
 let cuisineDropdownBtn = $(".dropdown-cuisine");
 
 //Intolerances - need to add classes in HTML
@@ -68,4 +69,17 @@ $.ajax({
   console.log(`mealImgURL: ${mealImgURL}`);
   console.log(`mealID: ${mealID}`);
   console.log(`recipeURL: ${recipeURL}`);
+
+  let recipeResultsDiv = $("#recipe-results");
+  //Starting to think about recipe card display
+  let recipeDiv = $("<div>");
+  recipeDiv.attr("id", "recipe-div");
+  let headerEl = $("<h2>");
+  let recipeImg = $("<img>");
+  let recipeEl = $("<ul>");
+  recipeEl.addClass("recipe-list-items");
+  recipeImg.attr("src", imageURL);
+  headerEl.text(mealTitle).css("font-weight", "bold");
+  recipeResultsDiv.append(recipeDiv);
+  recipeDiv.append(headerEl, recipeEl);
 });
