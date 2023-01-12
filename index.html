@@ -15,7 +15,178 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <title>Meal Planner</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+
+      <!-- Nav bar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light custom-nav">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Favourites</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">About</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+<!-- Fluid hero banner -->
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Hero banner</h1>
+          <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+        </div>
+      </div>
+
+      <div class="container-fluid" style="max-width: 1400px">
+        <div class="row">
+          <aside class="col-lg-3 pb-3">
+            <h2 id="user-input-heading" class="mt-1 h3 form-label">
+              Search for a recipe:
+            </h2>
+            <form id="search-form" class="form">
+              <div class="form-inline form-group">
+                <div class="input-group">
+                  <input
+                    class="form-input ingredient-search"
+                    type="text"
+                    id="search-input"
+                    placeholder="Type ingredient"
+                    aria-labelledby="form-heading"
+                    aria-controls="ingredient search"
+                  />
+                </div> 
+              </div>
+<!-- Intolerance checkboxes -->
+<p>Please tick any intolerances you have below:</p>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Dairy
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Egg
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Gluten
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Grain
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Peanut
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Seafood
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Sesame
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Shellfish
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Soy
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Sulfite
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Tree Nut
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Wheat
+                </label>
+              </div>
+
+<!-- <div class="container">
+  <h2>Form control: checkbox</h2>
+  <p>The form below contains three checkboxes. The last option is disabled:</p>
+  <form>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+      <label class="form-check-label" for="defaultCheck1">
+        Default checkbox
+      </label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="">Option 2</label>
+    </div>
+    <div class="checkbox disabled">
+      <label><input type="checkbox" value="" disabled>Option 3</label>
+    </div>
+  </form>
+</div> -->
+
+  
+                  <!-- <div class="input-group-append">
+                    <button
+                      type="submit"
+                      class="btn search-button"
+                      id="search-button"
+                      aria-label="submit search"
+                    >
+                      Search
+                    </button> -->
+          </aside>
+
+          <div class="col-lg-9 pb-3">
+            <section
+              id="recipe-results"
+              class="mt-3"
+              role="region"
+              aria-live="polite"
+            ></section>
+  </body>
   <!-- Moment.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
   <!-- jQuery -->
