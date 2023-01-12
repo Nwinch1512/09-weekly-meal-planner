@@ -1,5 +1,30 @@
 // Bring in HTML elements here
-// let ingredientEl = $("#");
+let dietDropdownBtn = $(".dropdown-diet");
+let timeToPrepInputEl = $("#time-to-prep");
+let cuisineDropdownBtn = $(".dropdown-cuisine");
+
+//Intolerances - need to add classes in HTML
+let noIntolerancesCheckbox = $(".no-intolerances");
+let dairyIntoleranceCheckbox = $(".dairy");
+let eggIntoleranceCheckbox = $(".egg");
+let glutenIntoleranceCheckbox = $(".gluten");
+let grainIntoleranceCheckbox = $(".grain");
+let seafoodIntoleranceCheckbox = $(".seafood");
+let shellfishIntoleranceCheckbox = $(".shellfish");
+let soyIntoleranceCheckbox = $(".soy");
+let sulfiteIntoleranceCheckbox = $(".sulfite");
+let treenutIntoleranceCheckbox = $(".treenut");
+let wheatIntoleranceCheckbox = $(".wheat");
+
+let noIntolerance = noIntolerancesCheckbox.val();
+let dairyIntolerance = dairyIntoleranceCheckbox.val();
+let eggIntolerance = eggIntoleranceCheckbox.val();
+let glutenIntolerance = glutenIntoleranceCheckbox.val();
+
+let diet = dietDropdownBtn.val();
+let cuisine = cuisineDropdownBtn.val();
+let timeToPrep = timeToPrepInputEl.val();
+console.log(timeToPrep);
 
 let APIKey = "2f346a836aae470092494ca66fe7f8fa";
 
