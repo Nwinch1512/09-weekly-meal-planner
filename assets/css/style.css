@@ -21,3 +21,8 @@ h2 {
   margin-left: 0 !important;
   margin-right: 0 !important;
 } */
+
+.jumbotron {
+  background-image: url(/assets/image/spaghetti-gc1907a1cb_1920\ copy.jpg);
+  background-size: cover;
+  height: 100%;}
