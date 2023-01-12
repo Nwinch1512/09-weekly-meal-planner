@@ -82,11 +82,18 @@
 
 <!-- User input elements to further refine recipe search       -->
             <form>
+              <h4>Tailor your search further:</h4>
                
 <!-- Intolerance checkboxes -->
 
           <div class="checkboxes">
-            <p>Please tick any intolerances you have below:</p>
+            <p>Please tick any intolerances/allergies you have.</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          None
+                        </label>
+                    </div>
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                           <label class="form-check-label" for="defaultCheck1">
@@ -163,9 +170,10 @@
 <!-- Diet dropdown -->
           <div class="dropdown-diet">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Diet
+                          Special diet?
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" type="button">I eat anything!</button>
                 <button class="dropdown-item" type="button">Vegetarian</button>
                 <button class="dropdown-item" type="button">Vegan</button>
                 <button class="dropdown-item" type="button">Pescetarian</button>
@@ -184,9 +192,10 @@
 <!-- Cuisine dropdown -->
           <div class="dropdown-cuisine">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Cuisine
+                          Particular cuisine?
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" type="button">All</button>
               <button class="dropdown-item" type="button">African</button>
               <button class="dropdown-item" type="button">American</button>
               <button class="dropdown-item" type="button">British</button>
