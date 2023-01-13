@@ -79,52 +79,54 @@ function displayRecipes(url) {
     method: "GET",
   }).then(function (response) {
     console.log(response);
-    let mealTitle = response.results[0].title;
-    let mealID = response.results[0].id;
-    let totalResults = response.totalResults;
-    console.log(totalResults);
-    //Need to figure out what unit price is measured in and display accordingly
-    let pricePerServing = response.results[0].pricePerServing;
-    let readyInMinutes = response.results[0].readyInMinutes;
-    let calories = Math.trunc(
-      response.results[0].nutrition.nutrients[0].amount
-    );
-    let mealImgURL = response.results[0].image;
-    let recipeURL = response.results[0].sourceUrl;
-    console.log(`pricePerServing: ${pricePerServing}`);
-    console.log(`readyInMinutes: ${readyInMinutes}`);
-    console.log(`calories: ${calories}`);
-    console.log(`mealImgURL: ${mealImgURL}`);
-    console.log(`mealID: ${mealID}`);
-    console.log(`recipeURL: ${recipeURL}`);
+    for (let i = 0; i < 4; i++) {
+      let mealTitle = response.results[i].title;
+      let mealID = response.results[i].id;
+      let totalResults = response.totalResults;
+      console.log(totalResults);
+      //Need to figure out what unit price is measured in and display accordingly
+      let pricePerServing = response.results[i].pricePerServing;
+      let readyInMinutes = response.results[i].readyInMinutes;
+      let calories = Math.trunc(
+        response.results[i].nutrition.nutrients[0].amount
+      );
+      let mealImgURL = response.results[i].image;
+      let recipeURL = response.results[i].sourceUrl;
+      console.log(`pricePerServing: ${pricePerServing}`);
+      console.log(`readyInMinutes: ${readyInMinutes}`);
+      console.log(`calories: ${calories}`);
+      console.log(`mealImgURL: ${mealImgURL}`);
+      console.log(`mealID: ${mealID}`);
+      console.log(`recipeURL: ${recipeURL}`);
 
-    //Starting to think about recipe card display
+      //Starting to think about recipe card display
 
-    let recipeDiv = $("<div>")
-      .addClass("card-body col-lg-3 col-md-3 col-sm-6 text-center")
-      // .css("background-color", "rgb(107,101,75)");
-      .css("background-image", `url(${mealImgURL})`);
-    //recipeDiv.attr("id", "recipe-div");
-    let headerEl = $("<h5>")
-      .addClass("card-title")
-      .text(mealTitle)
-      .css("font-weight", "bold");
+      let recipeDiv = $("<div>")
+        .addClass("card-body col-lg-3 col-md-3 col-sm-6 text-center")
+        // .css("background-color", "rgb(107,101,75)");
+        .css("background-image", `url(${mealImgURL})`);
+      //recipeDiv.attr("id", "recipe-div");
+      let headerEl = $("<h5>")
+        .addClass("card-title")
+        .text(mealTitle)
+        .css("font-weight", "bold");
 
-    let recipeImg = $("<img>").attr("src", mealImgURL);
+      let recipeImg = $("<img>").attr("src", mealImgURL);
 
-    let recipeURLEL = $("<a href>").attr("href", `${recipeURL}`);
-    let recipeEl = $("<ul>")
-      .css("list-style", "none")
+      let recipeURLEL = $("<a href>").attr("href", `${recipeURL}`);
+      let recipeEl = $("<ul>")
+        .css("list-style", "none")
 
-      .addClass("card-text")
-      .addClass("recipe-list-items");
+        .addClass("card-text")
+        .addClass("recipe-list-items");
 
-    let priceEl = $("<li>").text(`Price per serving: ${pricePerServing}`);
-    let timeEl = $("<li>").text(`Minutes to prepare meal: ${readyInMinutes}`);
-    let caloriesEl = $("<li>").text(`Calories: ${calories}`);
+      let priceEl = $("<li>").text(`Price per serving: ${pricePerServing}`);
+      let timeEl = $("<li>").text(`Minutes to prepare meal: ${readyInMinutes}`);
+      let caloriesEl = $("<li>").text(`Calories: ${calories}`);
 
-    recipeDiv.append(headerEl, recipeEl);
-    recipeEl.append(priceEl, timeEl, caloriesEl);
-    recipesContainerDiv.append(recipeDiv);
+      recipeDiv.append(headerEl, recipeEl);
+      recipeEl.append(priceEl, timeEl, caloriesEl);
+      recipesContainerDiv.append(recipeDiv);
+    }
   });
 }
