@@ -40,6 +40,7 @@ function printUserInputsToConsole(event) {
   console.log(timeToPrep);
   console.log(cuisine);
   console.log(userInputQueryURL);
+  displayRecipes(userInputQueryURL);
 }
 
 let APIKey = "2f346a836aae470092494ca66fe7f8fa";
@@ -66,46 +67,49 @@ let queryURL = `https://api.spoonacular.com/recipes/complexSearch?&number=7&type
 // let diet = vegan;
 // let price =
 
-//Example query
-// function displayRecipeCard(cuisine) {
-recipeResultsSec.empty();
-$.ajax({
-  url: queryURL,
-  method: "GET",
-}).then(function (response) {
-  console.log(response);
-  let mealTitle = response.results[0].title;
-  let mealID = response.results[0].id;
-  let totalResults = response.totalResults;
-  console.log(totalResults);
-  //Need to figure out what unit price is measured in and display accordingly
-  let pricePerServing = response.results[0].pricePerServing;
-  let readyInMinutes = response.results[0].readyInMinutes;
-  let calories = Math.trunc(response.results[0].nutrition.nutrients[0].amount);
-  let mealImgURL = response.results[0].image;
-  let recipeURL = response.results[0].sourceUrl;
-  console.log(`pricePerServing: ${pricePerServing}`);
-  console.log(`readyInMinutes: ${readyInMinutes}`);
-  console.log(`calories: ${calories}`);
-  console.log(`mealImgURL: ${mealImgURL}`);
-  console.log(`mealID: ${mealID}`);
-  console.log(`recipeURL: ${recipeURL}`);
+//Function to display recipes
+function displayRecipes(url) {
+  recipeResultsSec.empty();
+  $.ajax({
+    url: url,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    let mealTitle = response.results[0].title;
+    let mealID = response.results[0].id;
+    let totalResults = response.totalResults;
+    console.log(totalResults);
+    //Need to figure out what unit price is measured in and display accordingly
+    let pricePerServing = response.results[0].pricePerServing;
+    let readyInMinutes = response.results[0].readyInMinutes;
+    let calories = Math.trunc(
+      response.results[0].nutrition.nutrients[0].amount
+    );
+    let mealImgURL = response.results[0].image;
+    let recipeURL = response.results[0].sourceUrl;
+    console.log(`pricePerServing: ${pricePerServing}`);
+    console.log(`readyInMinutes: ${readyInMinutes}`);
+    console.log(`calories: ${calories}`);
+    console.log(`mealImgURL: ${mealImgURL}`);
+    console.log(`mealID: ${mealID}`);
+    console.log(`recipeURL: ${recipeURL}`);
 
-  //Starting to think about recipe card display
-  let recipeDiv = $("<div>");
-  recipeDiv.attr("id", "recipe-div");
-  let headerEl = $("<h2>");
-  let recipeImg = $("<img>");
-  let recipeEl = $("<ul>");
-  let priceEl = $("<li>");
-  let timeEl = $("<li>");
-  let caloriesEl = $("<li>");
-  recipeEl.addClass("recipe-list-items");
-  recipeImg.attr("src", imageURL);
-  headerEl.text(mealTitle).css("font-weight", "bold");
-  recipeResultsSec.append(recipeResultsDiv);
-  recipeResultsDiv.append(recipeDiv);
-  recipeDiv.append(headerEl, recipeEl);
-  console.log(timeToPrepInputEl.val());
-});
-// }
+    //Starting to think about recipe card display
+    let recipeDiv = $("<div>");
+    recipeDiv.attr("id", "recipe-div");
+    let headerEl = $("<h2>").text(`${mealTitle}`);
+    let recipeImg = $("<img>");
+    let recipeEl = $("<ul>");
+    let priceEl = $("<li>");
+    let timeEl = $("<li>");
+    let caloriesEl = $("<li>");
+    recipeEl.addClass("recipe-list-items");
+    recipeImg.attr("src", imageURL);
+    headerEl.text(mealTitle).css("font-weight", "bold");
+    recipeResultsSec.append(recipeResultsDiv);
+    recipeResultsDiv.append(recipeDiv);
+    recipeDiv.append(headerEl, recipeEl);
+    recipeEl.append(priceEl, timeEl, caloriesEl);
+    console.log(timeToPrepInputEl.val());
+  });
+}
