@@ -159,18 +159,19 @@ $(document).on("click",".modal-btns",openModal);
 
 function openModal (event){
   event.preventDefault();
-  // modal.style.display = "block";
-  console.log("click test");
+  console.log("click test 1");
+  modal.css('display','block');
 };
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-  modal.style.display = "none";
+  modal.css('display','none');
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+/* window.onclick = function(event) {
   if (event.target == modal) {
-    modal.style.display = "none";
+    console.log("click test 2");
+    modal.css('display','none');
   }
-}
+} */
