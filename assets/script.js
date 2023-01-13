@@ -10,7 +10,8 @@ searchBtn.on("click", printUserInputsToConsole);
 let intoleranceCheckboxes = document.forms["search-criteria-form"];
 
 let recipeResultsSec = $("#recipe-results-section");
-let recipesContainerDiv = $(".recipe-results");
+let recipesContainerDiv = $("#recipe-results");
+let resultsContainer = $(".results-container");
 
 // function to generate query url
 function printUserInputsToConsole(event) {
@@ -71,6 +72,8 @@ let queryURL = `https://api.spoonacular.com/recipes/complexSearch?&number=7&type
 //Function to display recipes
 function displayRecipes(url) {
   recipesContainerDiv.empty();
+  let resultsHeading = $("<h2>").text("Try one of these recipes!");
+  resultsContainer.append(resultsHeading);
   $.ajax({
     url: url,
     method: "GET",
@@ -96,8 +99,9 @@ function displayRecipes(url) {
     console.log(`recipeURL: ${recipeURL}`);
 
     //Starting to think about recipe card display
+
     let recipeDiv = $("<div>")
-      .addClass("card-body")
+      .addClass("card-body col-lg-3 col-md-3 col-sm-6 text-center")
       // .css("background-color", "rgb(107,101,75)");
       .css("background-image", `url(${mealImgURL})`);
     //recipeDiv.attr("id", "recipe-div");
@@ -118,6 +122,7 @@ function displayRecipes(url) {
     let priceEl = $("<li>").text(`Price per serving: ${pricePerServing}`);
     let timeEl = $("<li>").text(`Minutes to prepare meal: ${readyInMinutes}`);
     let caloriesEl = $("<li>").text(`Calories: ${calories}`);
+
     recipeDiv.append(headerEl, recipeEl);
     recipeEl.append(priceEl, timeEl, caloriesEl);
     recipesContainerDiv.append(recipeDiv);
