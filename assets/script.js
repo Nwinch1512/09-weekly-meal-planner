@@ -1,38 +1,57 @@
 // Bring in HTML elements here
 let dietDropdownBtn = $(".dropdown-diet");
 let timeToPrepInputEl = $("#time-to-prep");
+
 let cuisineDropdownBtn = $(".dropdown-cuisine");
+let prevBtn = $(".previous");
+let nextBtn = $(".next");
+let searchBtn = $(".submit");
+searchBtn.on("click", printUserInputsToConsole);
+let intoleranceCheckboxes = document.forms["search-criteria-form"];
 
-//Intolerances - need to add classes in HTML
-let noIntolerancesCheckbox = $(".no-intolerances");
-let dairyIntoleranceCheckbox = $(".dairy");
-let eggIntoleranceCheckbox = $(".egg");
-let glutenIntoleranceCheckbox = $(".gluten");
-let grainIntoleranceCheckbox = $(".grain");
-let seafoodIntoleranceCheckbox = $(".seafood");
-let shellfishIntoleranceCheckbox = $(".shellfish");
-let soyIntoleranceCheckbox = $(".soy");
-let sulfiteIntoleranceCheckbox = $(".sulfite");
-let treenutIntoleranceCheckbox = $(".treenut");
-let wheatIntoleranceCheckbox = $(".wheat");
+let recipeResultsSec = $("#recipe-results-section");
+let recipesContainerDiv = $("#recipe-results");
+let resultsContainer = $(".results-container");
 
-let noIntolerance = noIntolerancesCheckbox.val();
-let dairyIntolerance = dairyIntoleranceCheckbox.val();
-let eggIntolerance = eggIntoleranceCheckbox.val();
-let glutenIntolerance = glutenIntoleranceCheckbox.val();
+// function to generate query url
+function printUserInputsToConsole(event) {
+  event.preventDefault();
 
-let diet = dietDropdownBtn.val();
-let cuisine = cuisineDropdownBtn.val();
-let timeToPrep = timeToPrepInputEl.val();
-console.log(timeToPrep);
+  // How do I use intolerance as a parameter in query URL? A comma-separated list of intolerances
+  // How do I use cuisine as a parameter in query URL? cuisine=italian
+  // How do I use diet as a parameter in query URL? diet=vegan OR where there are two words you can use a space to seperate them e.g. diet=low foodmap
+  let queryURL = `https://api.spoonacular.com/recipes/complexSearch?&number=7&type=main&addRecipeInformation=true&addRecipeNutrition=true&apiKey=${APIKey}&diet=low fodmap&intolerances=peanut`;
+  let selectedIntolerances = $("input[name='intolerance']:checked")
+    .map(function () {
+      return $(this).val();
+    })
+    .get();
+  let intolerancesString = selectedIntolerances.join(",");
+  let specialDiet = $("#diet").val().toLowerCase();
+  let cuisine = $("#cuisine").val().toLowerCase();
+  let timeToPrep = timeToPrepInputEl.val();
+  let timeToPrepQueryText = timeToPrep > 0 ? `&timeToPrep=${timeToPrep}` : "";
+  let specialDietQueryText = specialDiet ? `&diet=${specialDiet}` : "";
+  let cuisineQueryText = cuisine
+    ? `&cuisine=${cuisine}`
+    : "&cuisine=african,american,british,cajun,caribbean,chinese,eastern european,european,french,german,greek,indian,irish,italian,japanese,jewish,korean,latin american,mediterranean,mexican,middle eastern,nordic,southern,spanish,thai,vietnamese";
+
+  let userInputQueryURL = `https://api.spoonacular.com/recipes/complexSearch?&number=7&type=main&addRecipeInformation=true&addRecipeNutrition=true&apiKey=${APIKey}&intolerances=${intolerancesString}${specialDietQueryText}${cuisineQueryText}${timeToPrepQueryText}`;
+  console.log(intolerancesString);
+  console.log(specialDiet);
+  console.log(timeToPrep);
+  console.log(cuisine);
+  console.log(userInputQueryURL);
+  displayRecipes(userInputQueryURL);
+}
 
 let APIKey = "2f346a836aae470092494ca66fe7f8fa";
 
 // queryURL for searching recipes
-let queryURL = `https://api.spoonacular.com/recipes/complexSearch?query=salmon&number=7&type=main&addRecipeInformation=true&apiKey=${APIKey}`;
+let queryURL = `https://api.spoonacular.com/recipes/complexSearch?&number=7&type=main&addRecipeInformation=true&addRecipeNutrition=true&apiKey=${APIKey}&diet=low fodmap&intolerances=peanut`;
 
-// queryURL for searching for recipes by list of ingredients entered as string, words seperated by commas.  Returns a response object with the ingredients listed in it
-let queryURLIngredients = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=7&apiKey=${APIKey}`;
+// Checking results for diet and intolerances by hardcoding URL
+// let queryURL = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${APIKey}&diet=pescetarian&intolerances=egg&maxReadyTime=25`;
 
 //This query url includes the following variables we can search by:
 // includeIngredients - A comma-separated list of ingredients that should/must be used in the recipes.
@@ -50,22 +69,64 @@ let queryURLIngredients = `https://api.spoonacular.com/recipes/findByIngredients
 // let diet = vegan;
 // let price =
 
-//Example query
+//Function to display recipes
+function displayRecipes(url) {
+  recipesContainerDiv.empty();
+  let resultsHeading = $("<h2>").text("Try one of these recipes!");
+  resultsContainer.append(resultsHeading);
+  $.ajax({
+    url: url,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    for (let i = 0; i < 4; i++) {
+      let mealTitle = response.results[i].title;
+      let mealID = response.results[i].id;
+      let totalResults = response.totalResults;
+      console.log(totalResults);
+      //Need to figure out what unit price is measured in and display accordingly
+      let pricePerServing = response.results[i].pricePerServing;
+      let readyInMinutes = response.results[i].readyInMinutes;
+      let calories = Math.trunc(
+        response.results[i].nutrition.nutrients[0].amount
+      );
+      let mealImgURL = response.results[i].image;
+      let recipeURL = response.results[i].sourceUrl;
+      console.log(`pricePerServing: ${pricePerServing}`);
+      console.log(`readyInMinutes: ${readyInMinutes}`);
+      console.log(`calories: ${calories}`);
+      console.log(`mealImgURL: ${mealImgURL}`);
+      console.log(`mealID: ${mealID}`);
+      console.log(`recipeURL: ${recipeURL}`);
 
-$.ajax({
-  url: queryURL,
-  method: "GET",
-}).then(function (response) {
-  console.log(response);
-  let pricePerServing = response.results[0].pricePerServing;
-  let readyInMinutes = response.results[0].readyInMinutes;
-  let mealImgURL = response.results[0].image;
-  let mealTitle = response.results[0].title;
-  let mealID = response.results[0].id;
-  let recipeURL = response.results[0].sourceUrl;
-  console.log(`pricePerServing: ${pricePerServing}`);
-  console.log(`readyInMinutes: ${readyInMinutes}`);
-  console.log(`mealImgURL: ${mealImgURL}`);
-  console.log(`mealID: ${mealID}`);
-  console.log(`recipeURL: ${recipeURL}`);
-});
+      //Starting to think about recipe card display
+
+      let recipeDiv = $("<div>")
+        .addClass("card-body col-lg-3 col-md-3 col-sm-6 text-center")
+        // .css("background-color", "rgb(107,101,75)");
+        .css("background-image", `url(${mealImgURL})`);
+      //recipeDiv.attr("id", "recipe-div");
+      let headerEl = $("<h5>")
+        .addClass("card-title")
+        .text(mealTitle)
+        .css("font-weight", "bold");
+
+      let recipeImg = $("<img>").attr("src", mealImgURL);
+
+      let recipeURLEL = $("<a href>").attr("href", `${recipeURL}`);
+      let recipeEl = $("<ul>")
+        .css("list-style", "none")
+
+        .addClass("card-text")
+        .addClass("recipe-list-items");
+
+      let priceEl = $("<li>").text(`Price per serving: ${pricePerServing}`);
+      let timeEl = $("<li>").text(`Minutes to prepare meal: ${readyInMinutes}`);
+      let caloriesEl = $("<li>").text(`Calories: ${calories}`);
+
+      recipeDiv.append(headerEl, recipeEl);
+      recipeEl.append(priceEl, timeEl, caloriesEl);
+      recipesContainerDiv.append(recipeDiv);
+    }
+  });
+}

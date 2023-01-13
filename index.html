@@ -17,7 +17,6 @@
   </head>
   <body>
     <header>
-
       <!-- Nav bar -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light custom-nav">
         <button
@@ -46,27 +45,30 @@
         </div>
       </nav>
 
-<!-- Fluid hero banner -->
-      <!-- <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">Hero banner</h1>
-          <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-        </div>
-      </div> -->
-     
-     
       <!-- Hero Banner -->
-      <div class="jumbotron jumbotron-fluid bg-danger text-white text-left" style="background: url(./assets/image/spaghetti-gc1907a1cb_1920\ copy.jpg) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+      <div
+        class="jumbotron jumbotron-fluid bg-danger text-white text-left"
+        style="
+          background: url(./assets/image/spaghetti-gc1907a1cb_1920\ copy.jpg)
+            no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+        "
+      >
         <div class="container">
-      <h1 class="display-3">Welcome to the Meal planner</h1>
-      <p class="lead">Your online guide for a better diet</p>
-    </div>
-    
+          <h1 class="display-3">Welcome to the Meal planner</h1>
+          <p class="lead">Your online guide for a better diet</p>
+        </div>
       </div>
+    </header>
+    <main>
+      <div class="container-fluid" style="max-width: 1400px">
+        <div class="row">
+          <!-- Main ingredient search heading and box       -->
 
-<!-- Main ingredient search heading and box       -->
-
-      <div id = "main-ingredient-search" class="container-fluid"> 
+          <!-- <div id = "main-ingredient-search" class="container-fluid"> 
         <h2 id="user-input-heading" class="mt-1 h3 form-label">
         Search for a recipe:</h2>
         <div id="search-form" class="form"> 
@@ -92,212 +94,258 @@
             </div> 
           </div> 
         </div>
-      </div>
-
-
-      <div class="container-fluid" style="max-width: 1400px">
-        <div class="row">
+      </div> -->
           <aside class="col-lg-3 pb-3">
+            <!-- User input elements to further refine recipe search       -->
+            <form id="search-criteria-form">
+              <h4>Tailor your recipe search:</h4>
 
-<!-- User input elements to further refine recipe search       -->
-            <form>
-              <h4>Tailor your search further:</h4>
-               
-<!-- Intolerance checkboxes -->
+              <!-- Intolerance checkboxes -->
 
-          <div class="checkboxes">
-            <p>Please tick any intolerances/allergies you have.</p>
-                    <div class="form-check">
-                        <input class="form-check-input no-intolerances" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                          None
-                        </label>
-                    </div>
-                        <div class="form-check">
-                          <input class="form-check-input dairy" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Dairy
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input egg" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Egg
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input gluten" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Gluten
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input grain" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Grain
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input peanut" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Peanut
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input seafood" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Seafood
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input sesame" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Sesame
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input shellfish" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Shellfish
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input soy" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Soy
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input sulfite" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Sulfite
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input treenut" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Tree Nut
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input wheat" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Wheat
-                          </label>
-                        </div>
-          </div>
-<!-- Diet dropdown -->
-          <div class="dropdown-diet">
-            <button class="btn btn-secondary dropdown-toggle diet dropdown-diet" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Special diet?
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <button class="dropdown-item" type="button">I eat anything!</button>
-                <button class="dropdown-item" type="button">Vegetarian</button>
-                <button class="dropdown-item" type="button">Vegan</button>
-                <button class="dropdown-item" type="button">Pescetarian</button>
-                <button class="dropdown-item" type="button">Gluten Free</button>
-                <button class="dropdown-item" type="button">Paleo</button>
-                <button class="dropdown-item" type="button">Ketogenic</button>
-                <button class="dropdown-item" type="button">Lacto-Vegetarian</button>
-                <button class="dropdown-item" type="button">Ovo-Vegetarian
-                </button>
-                <button class="dropdown-item" type="button">Primal</button>
-                <button class="dropdown-item" type="button">Low FODMAP</button>
-                <button class="dropdown-item" type="button">Whole30</button>
-            </div>
-          </div>
+              <div class="form-group checkboxes">
+                <p>Please tick any intolerances/allergies you have.</p>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="dairy"
+                    id="intolerance-dairy"
+                    name="intolerance"
+                  />
+                  <label class="form-check-label" for="intolerance-dairy">
+                    Dairy
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="egg"
+                    id="intolerance-egg"
+                    name="intolerance"
+                  />
+                  <label class="form-check-label" for="intolerance-egg">
+                    Egg
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="gluten"
+                    id="intolerance-gluten"
+                    name="intolerance"
+                  />
+                  <label class="form-check-label" for="intolerance-gluten">
+                    Gluten
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="grain"
+                    id="intolerance-grain"
+                    name="intolerance"
+                  />
+                  <label class="form-check-label" for="intolerance-grain">
+                    Grain
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="peanut"
+                    id="intolerance-peanut"
+                    name="intolerance"
+                  />
+                  <label class="form-check-label" for="intolerance-peanut">
+                    Peanut
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="seafood"
+                    id="intolerance-seafood"
+                    name="intolerance"
+                  />
+                  <label class="form-check-label" for="intolerance-seafood">
+                    Seafood
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="sesame"
+                    id="intolerance-sesame"
+                    name="intolerance"
+                  />
+                  <label class="form-check-label" for="intolerance-sesame">
+                    Sesame
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="shellfish"
+                    id="intolerance-shellfish"
+                    name="intolerance"
+                  />
+                  <label class="form-check-label" for="intolerance-shellfish">
+                    Shellfish
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="soy"
+                    id="intolerance-soy"
+                    name="intolerance"
+                  />
+                  <label class="form-check-label" for="intolerance-soy">
+                    Soy
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="sulfite"
+                    id="intolerance-sulfite"
+                    name="intolerance"
+                  />
+                  <label class="form-check-label" for="intolerance-sulfite">
+                    Sulfite
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="treenut"
+                    id="intolerance-treenut"
+                    name="intolerance"
+                  />
+                  <label class="form-check-label" for="intolerance-treenut">
+                    Tree Nut
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="wheat"
+                    id="intolerance-wheat"
+                    name="intolerance"
+                  />
+                  <label class="form-check-label" for="intolerance-wheat">
+                    Wheat
+                  </label>
+                </div>
+              </div>
 
-<!-- Cuisine dropdown -->
-          <div class="dropdown-cuisine">
-            <button class="btn btn-secondary dropdown-toggle cuisine dropdown-cuisine" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Particular cuisine?
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <button class="dropdown-item" type="button">All</button>
-              <button class="dropdown-item" type="button">African</button>
-              <button class="dropdown-item" type="button">American</button>
-              <button class="dropdown-item" type="button">British</button>
-              <button class="dropdown-item" type="button">Cajun</button>
-              <button class="dropdown-item" type="button">Caribbean</button>
-              <button class="dropdown-item" type="button">Chinese</button>
-              <button class="dropdown-item" type="button">Eastern European</button>
-              <button class="dropdown-item" type="button">European</button>
-              <button class="dropdown-item" type="button">French</button>
-              <button class="dropdown-item" type="button">German</button>
-              <button class="dropdown-item" type="button">Greek</button>
-              <button class="dropdown-item" type="button">Indian</button>
-              <button class="dropdown-item" type="button">Irish</button>
-              <button class="dropdown-item" type="button">Italian</button>
-              <button class="dropdown-item" type="button">Japanese</button>
-              <button class="dropdown-item" type="button">Jewish</button>
-              <button class="dropdown-item" type="button">Korean</button>
-              <button class="dropdown-item" type="button">Latin American</button>
-              <button class="dropdown-item" type="button">Mediterranean</button>
-              <button class="dropdown-item" type="button">Mexican</button>
-              <button class="dropdown-item" type="button">Middle Eastern</button>
-              <button class="dropdown-item" type="button">Nordic</button>
-              <button class="dropdown-item" type="button">Southern</button>
-              <button class="dropdown-item" type="button">Spanish</button>
-              <button class="dropdown-item" type="button">Thai</button>
-              <button class="dropdown-item" type="button">Vietnamese</button>
-            </div>
-          </div>
+              <!-- Diet dropdown -->
+              <div class="form-group dropdown-diet">
+                <label for="diet">Special diet?</label>
+                <select class="form-control" id="diet" name="diet">
+                  <option value="">I eat anything!</option>
+                  <option>Gluten Free</option>
+                  <option>Ketogenic</option>
+                  <option>Vegetarian</option>
+                  <option>Lacto-Vegetarian</option>
+                  <option>Ovo-Vegetarian</option>
+                  <option>Vegan</option>
+                  <option>Pescetarian</option>
+                  <option>Paleo</option>
+                  <option>Primal</option>
+                  <option>Low FODMAP</option>
+                  <option>Whole30</option>
+                </select>
+              </div>
 
-          <div class="form-group">
-                        <label for="time-to-prep">Time to prepare meal (in minutes):</label>
-                        <input type="number" class="form-control" id="time-to-prep">
-                        
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+              <!-- Cuisine dropdown -->
+              <div class="form-group dropdown-cuisine">
+                <label for="cuisine">Particular cuisine?</label>
+                <select class="form-control" id="cuisine" name="cuisine">
+                  <option value="">All</option>
+                  <option>African</option>
+                  <option>American</option>
+                  <option>British</option>
+                  <option>Cajun</option>
+                  <option>Caribbean</option>
+                  <option>Chinese</option>
+                  <option>Eastern European</option>
+                  <option>European</option>
+                  <option>French</option>
+                  <option>German</option>
+                  <option>Greek</option>
+                  <option>Indian</option>
+                  <option>Irish</option>
+                  <option>Italian</option>
+                  <option>Japanese</option>
+                  <option>Jewish</option>
+                  <option>Korean</option>
+                  <option>Latin American</option>
+                  <option>Mediterranean</option>
+                  <option>Mexican</option>
+                  <option>Middle Eastern</option>
+                  <option>Nordic</option>
+                  <option>Southern</option>
+                  <option>Spanish</option>
+                  <option>Thai</option>
+                  <option>Vietnamese</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="time-to-prep"
+                  >Time to prepare meal (in minutes):</label
+                >
+                <input type="number" class="form-control" id="time-to-prep" />
+              </div>
+              <button type="submit" class="btn btn-primary submit">
+                Search
+              </button>
             </form>
           </aside>
           <div class="col-lg-9 pb-3">
             <section
-              id="recipe-results"
+              id="recipe-results-section"
               class="mt-3"
               role="region"
               aria-live="polite"
             >
-              <div class="container-fluid recipes">
-                <h2>Recipes</h2>
+              <div class="container-fluid results-container">
+                
               </div>
               <div class="row" id="recipe-results">
-                <!-- Card 1 example of how card will be created dynamically in JS -->
-                <div class="cardContainer col-lg-3 col-md-3 col-sm-12">
-                  <div class="card recipe-1">
-                    <img
-                      src=""
-                      class="card-img"
-                      alt=""
-                    />
-                    <div class="card-body">
-                      <h2 class="card-title">Recipe name</h2>
-                      <p class="card-text">
-                        Price per serving:<br>
-                        Time to prepare (minutes):<br>
-                        Calories:
-                      </p>
-                      <a
-                        href=""
-                        id=""
-                        >Recipe link</a
-                      >
-                    </div>
-                  </div>
+                <!-- Recipe cards will be created dynamically in JS -->
+                
                 </div>
-
+                <button class="btn btn-primary previous" type="submit">
+                  Previous
+                </button>
+                <button class="btn btn-primary next" type="submit">Next</button>
               </div>
-              <button class="btn btn-primary" type="submit">Previous</button>
-              <button class="btn btn-primary" type="submit">Next</button>
-          </section>
+              
+            </section>
+          </div>
         </div>
       </div>
-          
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/script.js"></script>
   </body>
-  <script src="assets/script.js"></script>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </html>
+</html>
