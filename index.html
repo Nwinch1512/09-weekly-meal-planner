@@ -89,92 +89,87 @@
           <aside class="col-lg-3 pb-3">
 
 <!-- User input elements to further refine recipe search       -->
-            <form>
+            <form id="search-criteria-form">
               <h4>Tailor your recipe search:</h4>
                
 <!-- Intolerance checkboxes -->
 
           <div class="checkboxes">
             <p>Please tick any intolerances/allergies you have.</p>
-                    <div class="form-check">
-                        <input class="form-check-input no-intolerances" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                          None
-                        </label>
-                    </div>
-                        <div class="form-check">
-                          <input class="form-check-input dairy" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Dairy
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input egg" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Egg
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input gluten" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Gluten
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input grain" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Grain
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input peanut" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Peanut
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input seafood" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Seafood
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input sesame" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Sesame
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input shellfish" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Shellfish
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input soy" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Soy
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input sulfite" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Sulfite
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input treenut" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Tree Nut
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input wheat" type="checkbox" value="" id="defaultCheck1">
-                          <label class="form-check-label" for="defaultCheck1">
-                            Wheat
-                          </label>
-                        </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="dairy" id="intolerance-dairy" name="intolerance">
+              <label class="form-check-label" for="intolerance-dairy">
+                Dairy
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="egg" id="intolerance-egg" name="intolerance">
+              <label class="form-check-label" for="intolerance-egg">
+                Egg
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="gluten" id="intolerance-gluten" name="intolerance">
+              <label class="form-check-label" for="intolerance-gluten">
+                Gluten
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="grain" id="intolerance-grain" name="intolerance">
+              <label class="form-check-label" for="intolerance-grain">
+                Grain
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="peanut" id="intolerance-peanut" name="intolerance">
+              <label class="form-check-label" for="intolerance-peanut">
+                Peanut
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="seafood" id="intolerance-seafood" name="intolerance">
+              <label class="form-check-label" for="intolerance-seafood">
+                Seafood
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="sesame" id="intolerance-sesame" name="intolerance">
+              <label class="form-check-label" for="intolerance-sesame">
+                Sesame
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="shellfish" id="intolerance-shellfish" name="intolerance">
+              <label class="form-check-label" for="intolerance-shellfish">
+                Shellfish
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="soy" id="intolerance-soy" name="intolerance">
+              <label class="form-check-label" for="intolerance-soy">
+                Soy
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="sulfite" id="intolerance-sulfite" name="intolerance">
+              <label class="form-check-label" for="intolerance-sulfite">
+                Sulfite
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="treenut" id="intolerance-treenut" name="intolerance">
+              <label class="form-check-label" for="intolerance-treenut">
+                Tree Nut
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="wheat" id="intolerance-wheat" name="intolerance">
+              <label class="form-check-label" for="intolerance-wheat">
+                Wheat
+              </label>
+            </div>
           </div>
+            
 <!-- Diet dropdown -->
           <div class="dropdown-diet">
             <button class="btn btn-secondary dropdown-toggle diet dropdown-diet" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -282,10 +277,11 @@
           </section>
         </div>
       </div>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script src="assets/script.js"></script>
           
   </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="assets/script.js"></script>
   </html>

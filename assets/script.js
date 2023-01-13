@@ -1,15 +1,17 @@
 // Bring in HTML elements here
-// let dietDropdownBtn = $(".dropdown-diet");
-// let timeToPrepInputEl = $("#time-to-prep");
+let dietDropdownBtn = $(".dropdown-diet");
+let timeToPrepInputEl = $("#time-to-prep");
 
-// let cuisineDropdownBtn = $(".dropdown-cuisine");
-// let prevBtn = $(".previous");
-// let nextBtn = $(".next");
-// let submitBtn = $(".submit");
+let cuisineDropdownBtn = $(".dropdown-cuisine");
+let prevBtn = $(".previous");
+let nextBtn = $(".next");
+let searchBtn = $(".submit");
+searchBtn.on("click", printUserInputsToConsole);
+let intoleranceCheckboxes = document.forms["search-criteria-form"];
 
 let recipeResultsSec = $("#recipe-results-section");
 
-//Intolerances - need to add classes in HTML
+//Intolerances
 // let noIntolerancesCheckbox = $(".no-intolerances");
 // let dairyIntoleranceCheckbox = $(".dairy");
 // let eggIntoleranceCheckbox = $(".egg");
@@ -22,20 +24,39 @@ let recipeResultsSec = $("#recipe-results-section");
 // let treenutIntoleranceCheckbox = $(".treenut");
 // let wheatIntoleranceCheckbox = $(".wheat");
 
-// let noIntolerance = noIntolerancesCheckbox.val();
-// let dairyIntolerance = dairyIntoleranceCheckbox.val();
-// let eggIntolerance = eggIntoleranceCheckbox.val();
-// let glutenIntolerance = glutenIntoleranceCheckbox.val();
+// function to generate query url
+function printUserInputsToConsole(event) {
+  event.preventDefault();
+  // How do I use intolerance as a parameter in query URL? A comma-separated list of intolerances
+  // How do I get the values from checkboxes
+  // let noIntolerance = noIntolerancesCheckbox.val();
+  // let dairyIntolerance = dairyIntoleranceCheckbox.val();
+  // let eggIntolerance = eggIntoleranceCheckbox.val();
+  // let glutenIntolerance = glutenIntoleranceCheckbox.val();
 
-// let diet = dietDropdownBtn.val();
-// let cuisine = cuisineDropdownBtn.val();
-// let timeToPrep = timeToPrepInputEl.val();
-// console.log(timeToPrep);
+  //let allIntolerances = $("input[name='intolerance']:checked");
+  let selectedIntolerances = $("input[name='intolerance']:checked")
+    .map(function () {
+      return $(this).val();
+    })
+    .get();
+
+  // let diet = dietDropdownBtn.val();
+  // let cuisine = cuisineDropdownBtn.val();
+  let timeToPrep = timeToPrepInputEl.val();
+  let intolerancesString = selectedIntolerances.join(",");
+  console.log(`${intolerancesString}`);
+
+  console.log(timeToPrep);
+}
 
 let APIKey = "2f346a836aae470092494ca66fe7f8fa";
 
 // queryURL for searching recipes
-let queryURL = `https://api.spoonacular.com/recipes/complexSearch?&number=7&type=main&addRecipeInformation=true&addRecipeNutrition=true&apiKey=${APIKey}`;
+let queryURL = `https://api.spoonacular.com/recipes/complexSearch?&number=7&type=main&addRecipeInformation=true&addRecipeNutrition=true&apiKey=${APIKey}&intolerances=peanut`;
+
+// Checking results for diet and intolerances by hardcoding URL
+// let queryURL = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${APIKey}&diet=pescetarian&intolerances=egg`;
 
 //This query url includes the following variables we can search by:
 // includeIngredients - A comma-separated list of ingredients that should/must be used in the recipes.
@@ -63,6 +84,7 @@ $.ajax({
   console.log(response);
   let mealTitle = response.results[0].title;
   let mealID = response.results[0].id;
+  //Need to figure out what unit price is measured in and display accordingly
   let pricePerServing = response.results[0].pricePerServing;
   let readyInMinutes = response.results[0].readyInMinutes;
   let calories = Math.trunc(response.results[0].nutrition.nutrients[0].amount);
