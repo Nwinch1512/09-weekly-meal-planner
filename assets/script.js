@@ -10,6 +10,7 @@ searchBtn.on("click", printUserInputsToConsole);
 let intoleranceCheckboxes = document.forms["search-criteria-form"];
 
 let recipeResultsSec = $("#recipe-results-section");
+let recipesContainerDiv = $(".recipe-results");
 
 // function to generate query url
 function printUserInputsToConsole(event) {
@@ -69,7 +70,7 @@ let queryURL = `https://api.spoonacular.com/recipes/complexSearch?&number=7&type
 
 //Function to display recipes
 function displayRecipes(url) {
-  recipeResultsSec.empty();
+  recipesContainerDiv.empty();
   $.ajax({
     url: url,
     method: "GET",
@@ -95,21 +96,30 @@ function displayRecipes(url) {
     console.log(`recipeURL: ${recipeURL}`);
 
     //Starting to think about recipe card display
-    let recipeDiv = $("<div>");
-    recipeDiv.attr("id", "recipe-div");
-    let headerEl = $("<h2>").text(`${mealTitle}`);
-    let recipeImg = $("<img>");
-    let recipeEl = $("<ul>");
-    let priceEl = $("<li>");
-    let timeEl = $("<li>");
-    let caloriesEl = $("<li>");
-    recipeEl.addClass("recipe-list-items");
-    recipeImg.attr("src", imageURL);
-    headerEl.text(mealTitle).css("font-weight", "bold");
-    recipeResultsSec.append(recipeResultsDiv);
-    recipeResultsDiv.append(recipeDiv);
+    let recipeDiv = $("<div>")
+      .addClass("card-body")
+      // .css("background-color", "rgb(107,101,75)");
+      .css("background-image", `url(${mealImgURL})`);
+    //recipeDiv.attr("id", "recipe-div");
+    let headerEl = $("<h5>")
+      .addClass("card-title")
+      .text(mealTitle)
+      .css("font-weight", "bold");
+
+    let recipeImg = $("<img>").attr("src", mealImgURL);
+
+    let recipeURLEL = $("<a href>").attr("href", `${recipeURL}`);
+    let recipeEl = $("<ul>")
+      .css("list-style", "none")
+
+      .addClass("card-text")
+      .addClass("recipe-list-items");
+
+    let priceEl = $("<li>").text(`Price per serving: ${pricePerServing}`);
+    let timeEl = $("<li>").text(`Minutes to prepare meal: ${readyInMinutes}`);
+    let caloriesEl = $("<li>").text(`Calories: ${calories}`);
     recipeDiv.append(headerEl, recipeEl);
     recipeEl.append(priceEl, timeEl, caloriesEl);
-    console.log(timeToPrepInputEl.val());
+    recipesContainerDiv.append(recipeDiv);
   });
 }
