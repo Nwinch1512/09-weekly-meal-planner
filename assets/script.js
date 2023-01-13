@@ -35,7 +35,7 @@ let recipeResultsSec = $("#recipe-results-section");
 let APIKey = "2f346a836aae470092494ca66fe7f8fa";
 
 // queryURL for searching recipes
-let queryURL = `https://api.spoonacular.com/recipes/complexSearch?query=salmon&number=7&type=main&addRecipeInformation=true&apiKey=${APIKey}`;
+let queryURL = `https://api.spoonacular.com/recipes/complexSearch?query=salmon&number=7&type=main&addRecipeInformation=true&addRecipeNutrition=true&apiKey=${APIKey}`;
 
 // queryURL for searching for recipes by list of ingredients entered as string, words seperated by commas.  Returns a response object with the ingredients listed in it
 let queryURLIngredients = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=7&apiKey=${APIKey}`;
@@ -64,14 +64,16 @@ $.ajax({
   method: "GET",
 }).then(function (response) {
   console.log(response);
-  let pricePerServing = response.results[0].pricePerServing;
-  let readyInMinutes = response.results[0].readyInMinutes;
-  let mealImgURL = response.results[0].image;
   let mealTitle = response.results[0].title;
   let mealID = response.results[0].id;
+  let pricePerServing = response.results[0].pricePerServing;
+  let readyInMinutes = response.results[0].readyInMinutes;
+  let calories = Math.trunc(response.results[0].nutrition.nutrients[0].amount);
+  let mealImgURL = response.results[0].image;
   let recipeURL = response.results[0].sourceUrl;
   console.log(`pricePerServing: ${pricePerServing}`);
   console.log(`readyInMinutes: ${readyInMinutes}`);
+  console.log(`calories: ${calories}`);
   console.log(`mealImgURL: ${mealImgURL}`);
   console.log(`mealID: ${mealID}`);
   console.log(`recipeURL: ${recipeURL}`);
