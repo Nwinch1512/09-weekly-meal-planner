@@ -1,31 +1,36 @@
 // Bring in HTML elements here
-let dietDropdownBtn = $("button.dropdown-diet");
-let timeToPrepInputEl = $("#time-to-prep");
-console.log(timeToPrepInputEl.val());
-let cuisineDropdownBtn = $(".dropdown-cuisine");
+// let dietDropdownBtn = $(".dropdown-diet");
+// let timeToPrepInputEl = $("#time-to-prep");
+
+// let cuisineDropdownBtn = $(".dropdown-cuisine");
+// let prevBtn = $(".previous");
+// let nextBtn = $(".next");
+// let submitBtn = $(".submit");
+
+let recipeResultsSec = $("#recipe-results-section");
 
 //Intolerances - need to add classes in HTML
-let noIntolerancesCheckbox = $(".no-intolerances");
-let dairyIntoleranceCheckbox = $(".dairy");
-let eggIntoleranceCheckbox = $(".egg");
-let glutenIntoleranceCheckbox = $(".gluten");
-let grainIntoleranceCheckbox = $(".grain");
-let seafoodIntoleranceCheckbox = $(".seafood");
-let shellfishIntoleranceCheckbox = $(".shellfish");
-let soyIntoleranceCheckbox = $(".soy");
-let sulfiteIntoleranceCheckbox = $(".sulfite");
-let treenutIntoleranceCheckbox = $(".treenut");
-let wheatIntoleranceCheckbox = $(".wheat");
+// let noIntolerancesCheckbox = $(".no-intolerances");
+// let dairyIntoleranceCheckbox = $(".dairy");
+// let eggIntoleranceCheckbox = $(".egg");
+// let glutenIntoleranceCheckbox = $(".gluten");
+// let grainIntoleranceCheckbox = $(".grain");
+// let seafoodIntoleranceCheckbox = $(".seafood");
+// let shellfishIntoleranceCheckbox = $(".shellfish");
+// let soyIntoleranceCheckbox = $(".soy");
+// let sulfiteIntoleranceCheckbox = $(".sulfite");
+// let treenutIntoleranceCheckbox = $(".treenut");
+// let wheatIntoleranceCheckbox = $(".wheat");
 
-let noIntolerance = noIntolerancesCheckbox.val();
-let dairyIntolerance = dairyIntoleranceCheckbox.val();
-let eggIntolerance = eggIntoleranceCheckbox.val();
-let glutenIntolerance = glutenIntoleranceCheckbox.val();
+// let noIntolerance = noIntolerancesCheckbox.val();
+// let dairyIntolerance = dairyIntoleranceCheckbox.val();
+// let eggIntolerance = eggIntoleranceCheckbox.val();
+// let glutenIntolerance = glutenIntoleranceCheckbox.val();
 
-let diet = dietDropdownBtn.val();
-let cuisine = cuisineDropdownBtn.val();
-let timeToPrep = timeToPrepInputEl.val();
-console.log(timeToPrep);
+// let diet = dietDropdownBtn.val();
+// let cuisine = cuisineDropdownBtn.val();
+// let timeToPrep = timeToPrepInputEl.val();
+// console.log(timeToPrep);
 
 let APIKey = "2f346a836aae470092494ca66fe7f8fa";
 
@@ -52,7 +57,8 @@ let queryURLIngredients = `https://api.spoonacular.com/recipes/findByIngredients
 // let price =
 
 //Example query
-
+// function displayRecipeCard(cuisine) {
+recipeResultsSec.empty();
 $.ajax({
   url: queryURL,
   method: "GET",
@@ -70,16 +76,21 @@ $.ajax({
   console.log(`mealID: ${mealID}`);
   console.log(`recipeURL: ${recipeURL}`);
 
-  let recipeResultsDiv = $("#recipe-results");
   //Starting to think about recipe card display
   let recipeDiv = $("<div>");
   recipeDiv.attr("id", "recipe-div");
   let headerEl = $("<h2>");
   let recipeImg = $("<img>");
   let recipeEl = $("<ul>");
+  let priceEl = $("<li>");
+  let timeEl = $("<li>");
+  let caloriesEl = $("<li>");
   recipeEl.addClass("recipe-list-items");
   recipeImg.attr("src", imageURL);
   headerEl.text(mealTitle).css("font-weight", "bold");
+  recipeResultsSec.append(recipeResultsDiv);
   recipeResultsDiv.append(recipeDiv);
   recipeDiv.append(headerEl, recipeEl);
+  console.log(timeToPrepInputEl.val());
 });
+// }
