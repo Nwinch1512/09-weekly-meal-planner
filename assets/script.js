@@ -40,13 +40,16 @@ function printUserInputsToConsole(event) {
       return $(this).val();
     })
     .get();
+  let intolerancesString = selectedIntolerances.join(",");
+
+  let specialDiet = $("#diet").val();
 
   // let diet = dietDropdownBtn.val();
   // let cuisine = cuisineDropdownBtn.val();
   let timeToPrep = timeToPrepInputEl.val();
-  let intolerancesString = selectedIntolerances.join(",");
-  console.log(`${intolerancesString}`);
 
+  console.log(intolerancesString);
+  console.log(specialDiet);
   console.log(timeToPrep);
 }
 
