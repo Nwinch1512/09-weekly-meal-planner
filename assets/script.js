@@ -35,10 +35,7 @@ let recipeResultsSec = $("#recipe-results-section");
 let APIKey = "2f346a836aae470092494ca66fe7f8fa";
 
 // queryURL for searching recipes
-let queryURL = `https://api.spoonacular.com/recipes/complexSearch?query=salmon&number=7&type=main&addRecipeInformation=true&addRecipeNutrition=true&apiKey=${APIKey}`;
-
-// queryURL for searching for recipes by list of ingredients entered as string, words seperated by commas.  Returns a response object with the ingredients listed in it
-let queryURLIngredients = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=7&apiKey=${APIKey}`;
+let queryURL = `https://api.spoonacular.com/recipes/complexSearch?&number=7&type=main&addRecipeInformation=true&addRecipeNutrition=true&apiKey=${APIKey}`;
 
 //This query url includes the following variables we can search by:
 // includeIngredients - A comma-separated list of ingredients that should/must be used in the recipes.
