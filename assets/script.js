@@ -42,7 +42,7 @@ function printUserInputsToConsole(event) {
     .get();
   let intolerancesString = selectedIntolerances.join(",");
 
-  let specialDiet = $("#diet").val();
+  let specialDiet = $("#diet").val().toLowerCase();
 
   // let diet = dietDropdownBtn.val();
   // let cuisine = cuisineDropdownBtn.val();
