@@ -105,6 +105,8 @@ function displayRecipes(url) {
         .addClass("card-body col-lg-3 col-md-3 col-sm-6 text-center")
         // .css("background-color", "rgb(107,101,75)");
         .css("background-image", `url(${mealImgURL})`);
+        // add attribute as an identifier for modal button to use to get recipie info from API
+        .attribute(mealID);
       //recipeDiv.attr("id", "recipe-div");
       let headerEl = $("<h5>")
         .addClass("card-title")
@@ -123,8 +125,12 @@ function displayRecipes(url) {
       let priceEl = $("<li>").text(`Price per serving: ${pricePerServing}`);
       let timeEl = $("<li>").text(`Minutes to prepare meal: ${readyInMinutes}`);
       let caloriesEl = $("<li>").text(`Calories: ${calories}`);
+      
+      //ToDo Modal window js here
+        let buttonEL =
 
-      recipeDiv.append(headerEl, recipeEl);
+      //ToDo Append modal button at end of bracket below
+      recipeDiv.append(headerEl, recipeEl, buttonEl);
       recipeEl.append(priceEl, timeEl, caloriesEl);
       recipesContainerDiv.append(recipeDiv);
     }
