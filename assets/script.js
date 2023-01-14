@@ -123,10 +123,51 @@ function displayRecipes(url) {
       let priceEl = $("<li>").text(`Price per serving: ${pricePerServing}`);
       let timeEl = $("<li>").text(`Minutes to prepare meal: ${readyInMinutes}`);
       let caloriesEl = $("<li>").text(`Calories: ${calories}`);
+      
+      // Modal button and properties added here
+        let buttonEl = $("<button>")
+        .addClass("btn btn-secondary modal-btns")
+        // add attribute as an identifier for modal button to use to get recipie info from API
+        .attr("id", mealID)
+        .text("Cooking instructions");
 
-      recipeDiv.append(headerEl, recipeEl);
+      recipeDiv.append(headerEl, recipeEl, buttonEl);
       recipeEl.append(priceEl, timeEl, caloriesEl);
       recipesContainerDiv.append(recipeDiv);
     }
   });
 }
+
+
+
+
+// Code to control opening and closing of modal
+
+// Get the modal div from HTML
+var modal = $("#myModal");
+
+// Get the <span> element that closes the modal
+var span = $(".close")[0];
+
+// When the user clicks the button, open the modal. This function is used
+// so appended buttons added by JS to document can be clicked on
+
+$(document).on("click",".modal-btns",openModal);
+
+function openModal (event){
+  event.preventDefault();
+  modal.css('display','block');
+};
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.css('display','none');
+}
+
+// When the user clicks anywhere outside of the modal, close it
+/* window.onclick = function(event) {
+  if (event.target == modal) {
+    console.log("click test 2");
+    modal.css('display','none');
+  }
+} */
