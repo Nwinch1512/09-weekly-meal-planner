@@ -21,7 +21,14 @@ h2 {
   margin-left: 0 !important;
   margin-right: 0 !important;
 } */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap');
 
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'poppins', sans-serif;
+}
 .jumbotron {
   background-image: url(/assets/image/spaghetti-gc1907a1cb_1920\ copy.jpg);
   background-size: cover;
