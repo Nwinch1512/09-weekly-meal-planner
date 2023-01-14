@@ -104,7 +104,7 @@ function displayRecipes(url) {
       let recipeDiv = $("<div>")
         .addClass("card-body col-lg-3 col-md-3 col-sm-6 text-center")
         // .css("background-color", "rgb(107,101,75)");
-        .css("background-image", `url(${mealImgURL})`)
+        .css("background-image", `url(${mealImgURL})`);
       //recipeDiv.attr("id", "recipe-div");
       let headerEl = $("<h5>")
         .addClass("card-title")
@@ -146,9 +146,6 @@ function displayRecipes(url) {
 // Get the modal div from HTML
 var modal = $("#myModal");
 
-// Get the button that opens the modal
-var modalBtn = $(".modal-btn");
-
 // Get the <span> element that closes the modal
 var span = $(".close")[0];
 
@@ -159,7 +156,6 @@ $(document).on("click",".modal-btns",openModal);
 
 function openModal (event){
   event.preventDefault();
-  console.log("click test 1");
   modal.css('display','block');
 };
 
