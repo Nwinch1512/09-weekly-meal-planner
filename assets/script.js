@@ -157,6 +157,7 @@ $(document).on("click",".modal-btns",openModal);
 function openModal (event){
   event.preventDefault();
   modal.css('display','block');
+  MealIDSearch($(this).attr("id"));
 };
 
 // When the user clicks on <span> (x), close the modal
@@ -171,3 +172,8 @@ span.onclick = function() {
     modal.css('display','none');
   }
 } */
+
+
+function MealIDSearch(value){
+  console.log(value);
+}
