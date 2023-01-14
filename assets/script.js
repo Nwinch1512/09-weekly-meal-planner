@@ -128,7 +128,7 @@ function displayRecipes(url) {
         let buttonEl = $("<button>")
         .addClass("btn btn-secondary modal-btns")
         // add attribute as an identifier for modal button to use to get recipie info from API
-        .attr("id", mealID)
+        .attr("id", recipeURL)
         .text("Cooking instructions");
 
       recipeDiv.append(headerEl, recipeEl, buttonEl);
@@ -154,10 +154,11 @@ var span = $(".close")[0];
 
 $(document).on("click",".modal-btns",openModal);
 
+// Open Modal then 
 function openModal (event){
   event.preventDefault();
   modal.css('display','block');
-  MealIDSearch($(this).attr("id"));
+  iframeWebsite($(this).attr("id"));
 };
 
 // When the user clicks on <span> (x), close the modal
@@ -174,6 +175,10 @@ span.onclick = function() {
 } */
 
 
-function MealIDSearch(value){
-  console.log(value);
+function iframeWebsite(website){
+  console.log(website);
+
+  // select iframe SRC attribute as website URL of meal cooking instructions
+  $("#iframeEl").attr("src", website);
+  
 }
