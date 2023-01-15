@@ -129,7 +129,7 @@ function displayRecipes(url) {
         let buttonEl = $("<button>")
         .addClass("btn btn-secondary modal-btns")
         // add attribute as an identifier for modal button to use to get recipie info from API
-        .attr("id", recipeURL)
+        .attr("url", recipeURL)
         .text("Cooking instructions");
 
       // Favourite button div
@@ -192,7 +192,7 @@ $(document).on("click",".modal-btns",openModal);
 function openModal (event){
   event.preventDefault();
   modal.css('display','block');
-  iframeWebsite($(this).attr("id"));
+  iframeWebsite($(this).attr("url"));
 };
 
 // When the user clicks on <span> (x), close the modal
@@ -217,7 +217,6 @@ $(document).on("click",".favourite-btns",saveToLocalStorage);
 // Save to local storage 
 function saveToLocalStorage (event){
   event.preventDefault();
-  // modal.css('display','block');
   let itemID = $(this).attr("id");
 
   // parse existing storage key or string representation of empty array (uses || operator, means
