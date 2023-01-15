@@ -71,6 +71,7 @@ let queryURL = `https://api.spoonacular.com/recipes/complexSearch?&number=7&type
 
 //Function to display recipes
 function displayRecipes(url) {
+  resultsContainer.empty();
   recipesContainerDiv.empty();
   let resultsHeading = $("<h2>").text("Try one of these recipes!");
   resultsContainer.append(resultsHeading);
@@ -131,7 +132,40 @@ function displayRecipes(url) {
         .attr("id", recipeURL)
         .text("Cooking instructions");
 
-      recipeDiv.append(headerEl, recipeEl, buttonEl);
+      // Favourite button div
+      let favouriteDiv = $("<div>")
+      
+        // Favourite button created and added to card here
+        let buttonFavourite = $("<button>")
+        .addClass("btn btn-danger favourite-btns")
+        // add attribute as an identifier for favourite button
+        .attr("id", mealID)
+        .text("Favourite");
+        // Favourite icon created and added here
+        let iOne =$("<i>")
+        .addClass("glyphicon far fa-heart");
+        let iTwo =$("<i>")
+        .addClass("glyphicon fas fa-heart");
+
+      // Function- heart icon red if recipe has already been favourited and saved in local storage
+      function checkIcon (mealIDValue) {
+        mealIDValueText = (`${mealIDValue}`)
+      // get from local storage
+      var existingEntriesCheck = JSON.parse(localStorage.getItem("locations") || '[]');
+      // if in local storage turn heart icon on
+      if (existingEntriesCheck.includes(mealIDValueText)) {
+      iTwo.css('opacity', '1');
+        }else{
+      // else leave heart icon off
+      iTwo.css('opacity', '0');
+      }
+      };
+    
+
+      checkIcon(mealID);
+
+      favouriteDiv.append(buttonFavourite, iOne, iTwo);
+      recipeDiv.append(headerEl, recipeEl, buttonEl, favouriteDiv);
       recipeEl.append(priceEl, timeEl, caloriesEl);
       recipesContainerDiv.append(recipeDiv);
     }
@@ -149,7 +183,7 @@ var modal = $("#myModal");
 // Get the <span> element that closes the modal
 var span = $(".close")[0];
 
-// When the user clicks the button, open the modal. This function is used
+// When the user clicks the cooking button, open the modal. This function is used
 // so appended buttons added by JS to document can be clicked on
 
 $(document).on("click",".modal-btns",openModal);
@@ -174,9 +208,44 @@ span.onclick = function() {
   }
 } */
 
+// When the user clicks the favourite button, save the card id
+// to local storage and fill in the heart icon, or remove if it's
+// already there
 
+$(document).on("click",".favourite-btns",saveToLocalStorage);
+
+// Save to local storage 
+function saveToLocalStorage (event){
+  event.preventDefault();
+  // modal.css('display','block');
+  let itemID = $(this).attr("id");
+
+  // parse existing storage key or string representation of empty array (uses || operator, means
+  // to take "lis_items" or if that is false take empty array '[]')
+  var existingEntries = JSON.parse(localStorage.getItem("locations") || '[]');
+
+  console.log(existingEntries);
+  console.log(itemID);
+
+
+  // Add item if it's not already in the array, then store array again
+  if (!existingEntries.includes(itemID)) {
+    existingEntries.push(itemID);
+    localStorage.setItem("locations", JSON.stringify(existingEntries));
+    // Also turn the heart icon on as value is added to local storage
+  $(this).siblings(".fas").css('opacity', '1');
+  }else{
+  // if item is already there remove it, ie. 'unfavourite-ing' it
+    let itemIDindex = existingEntries.indexOf(itemID);
+    existingEntries.splice(itemIDindex, 1);
+    localStorage.setItem("locations", JSON.stringify(existingEntries));
+    // Also turn the heart icon off as value is removed from local storage
+    $(this).siblings(".fas").css('opacity', '0');
+  }
+};
+
+// function to load webpage into iframe in modal window
 function iframeWebsite(website){
-  console.log(website);
 
   // select iframe SRC attribute as website URL of meal cooking instructions
   $("#iframeEl").attr("src", website);

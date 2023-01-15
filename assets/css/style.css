@@ -68,3 +68,22 @@ h2 {
   text-decoration: none;
   cursor: pointer;
 }
+
+/* CSS for favourite heart icon */
+
+.glyphicon {
+  color: rgb(163, 18, 31);
+  position: absolute;
+    bottom: 1;
+    right: 1;
+  font-size: 40px;
+}
+
+.far  {
+  color: black;
+}
+
+.fas {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
