@@ -33,3 +33,7 @@ h2 {
   background-image: url(/assets/image/spaghetti-gc1907a1cb_1920\ copy.jpg);
   background-size: cover;
   height: 100%;}
+
+  .hide{
+    display: none;
+  }
