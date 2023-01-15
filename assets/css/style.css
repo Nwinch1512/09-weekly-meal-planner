@@ -68,3 +68,11 @@ h2 {
   text-decoration: none;
   cursor: pointer;
 }
+
+.navBar-details{
+  background-color: #9A031e;
+}
+
+#link-text{
+  color: #FEE1C7;
+}
