@@ -151,7 +151,7 @@ function displayRecipes(url) {
       function checkIcon (mealIDValue) {
         mealIDValueText = (`${mealIDValue}`)
       // get from local storage
-      var existingEntriesCheck = JSON.parse(localStorage.getItem("locations") || '[]');
+      var existingEntriesCheck = getFavourites();
       // if in local storage turn heart icon on
       if (existingEntriesCheck.includes(mealIDValueText)) {
       iTwo.css('opacity', '1');
@@ -222,23 +222,20 @@ function saveToLocalStorage (event){
 
   // parse existing storage key or string representation of empty array (uses || operator, means
   // to take "lis_items" or if that is false take empty array '[]')
-  var existingEntries = JSON.parse(localStorage.getItem("locations") || '[]');
-
-  console.log(existingEntries);
-  console.log(itemID);
+  var existingEntries = getFavourites();
 
 
   // Add item if it's not already in the array, then store array again
   if (!existingEntries.includes(itemID)) {
     existingEntries.push(itemID);
-    localStorage.setItem("locations", JSON.stringify(existingEntries));
+    localStorage.setItem("favourites", JSON.stringify(existingEntries));
     // Also turn the heart icon on as value is added to local storage
   $(this).siblings(".fas").css('opacity', '1');
   }else{
   // if item is already there remove it, ie. 'unfavourite-ing' it
     let itemIDindex = existingEntries.indexOf(itemID);
     existingEntries.splice(itemIDindex, 1);
-    localStorage.setItem("locations", JSON.stringify(existingEntries));
+    setFavourites(existingEntries);
     // Also turn the heart icon off as value is removed from local storage
     $(this).siblings(".fas").css('opacity', '0');
   }
@@ -250,4 +247,14 @@ function iframeWebsite(website){
   // select iframe SRC attribute as website URL of meal cooking instructions
   $("#iframeEl").attr("src", website);
   
-}
+};
+
+// function to get values from local storage
+function getFavourites(){
+  return JSON.parse(localStorage.getItem("favourites") || '[]');
+};
+
+// function to set values from array in local storage
+function setFavourites(favArray){
+  localStorage.setItem("favourites", JSON.stringify(favArray));
+};
