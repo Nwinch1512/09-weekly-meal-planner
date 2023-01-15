@@ -228,7 +228,7 @@ function saveToLocalStorage (event){
   // Add item if it's not already in the array, then store array again
   if (!existingEntries.includes(itemID)) {
     existingEntries.push(itemID);
-    localStorage.setItem("favourites", JSON.stringify(existingEntries));
+    setFavourites(existingEntries);
     // Also turn the heart icon on as value is added to local storage
   $(this).siblings(".fas").css('opacity', '1');
   }else{
