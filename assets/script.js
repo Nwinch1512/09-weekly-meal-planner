@@ -144,7 +144,8 @@ function displayRecipes(url) {
       let recipeDiv = $("<div>")
         .addClass("card-body col-lg-3 col-md-3 col-sm-6 text-center")
         // .css("background-color", "rgb(107,101,75)");
-        .css("background-image", `url(${mealImgURL})`);
+        .css("background-image", `url(${mealImgURL})`)
+        .css("padding", "0");
       //recipeDiv.attr("id", "recipe-div");
       let headerEl = $("<h5>")
         .addClass("card-title")
