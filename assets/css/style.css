@@ -21,12 +21,22 @@ h2 {
   margin-left: 0 !important;
   margin-right: 0 !important;
 } */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap');
 
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'poppins', sans-serif;
+}
 .jumbotron {
   background-image: url(/assets/image/spaghetti-gc1907a1cb_1920\ copy.jpg);
   background-size: cover;
   height: 100%;}
 
+.hide{
+  display: none;
+}
 
 /* Initial placeholder CSS styling added for modal */
 
@@ -67,6 +77,25 @@ h2 {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+/* CSS for favourite heart icon */
+
+.glyphicon {
+  color: rgb(163, 18, 31);
+  position: absolute;
+    bottom: 1;
+    right: 1;
+  font-size: 40px;
+}
+
+.far  {
+  color: black;
+}
+
+.fas {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .navBar-details{
