@@ -16,26 +16,30 @@ function appendRows(){
     
       // Take array of locations from local storage and loop through them
       var favouriteIDs = JSON.parse(localStorage.getItem("favourites"));
+      var imgURLs = JSON.parse(localStorage.getItem("blogFavourites"));
+      var blogURLs = JSON.parse(localStorage.getItem("imgFavourites"));
+      var mealTitles = JSON.parse(localStorage.getItem("titleFavourites"));
+
       
     
       for (var i = 0; i < favouriteIDs.length; i++) {
     
         // New row
         var newRow = $("<div>")
-        .addClass("row");
+        .addClass("row entries-rows");
 
         var columnOne = $("<div>")
-        .addClass("col-sm d-flex justify-content-center lead")
-        .text(`${favouriteIDs[i]}`);
+        .addClass("col-sm d-flex justify-content-center entries-columns")
+        .text(`${mealTitles[i]}`);
 
         var columnTwo = $("<div>")
-        .addClass("col-sm d-flex justify-content-center lead");
+        .addClass("col-sm d-flex justify-content-center entries-columns");
 
         var columnThree = $("<div>")
-        .addClass("col-sm d-flex justify-content-center lead");
+        .addClass("col-sm d-flex justify-content-center entries-columns");
 
         var columnFour = $("<div>")
-        .addClass("col-sm d-flex justify-content-center lead");
+        .addClass("col-sm d-flex justify-content-center entries-columns");
 
         newRow.append(columnOne, columnTwo, columnThree, columnFour);
 
