@@ -112,3 +112,10 @@ body {
 #link-text {
   color: #fee1c7;
 }
+
+#favourites-table{
+  padding: 20px;
+  border-style: solid;
+  border-color: #000;
+}
+
