@@ -182,6 +182,7 @@ function displayRecipes(url) {
         .attr("id", mealID)
         .attr("urlBlog", recipeURL)
         .attr("urlImage", mealImgURL)
+        .attr("title",mealTitle)
         .text("Favourite");
       // Favourite icon created and added here
       let iOne = $("<i>").addClass("glyphicon far fa-heart");
@@ -255,12 +256,14 @@ function saveToLocalStorage(event) {
   let itemID = $(this).attr("id");
   let itemBlogUrl = $(this).attr("urlBlog");
   let itemImgUrl = $(this).attr("urlImage");
+  let itemTitle = $(this).attr("title");
 
   // parse existing storage key or string representation of empty array (uses || operator, means
   // to take "lis_items" or if that is false take empty array '[]')
   var existingEntries = getFavourites();
   var existingBlogEntries = getBlogFavourites();
   var existingImgEntries = getImgFavourites();
+  var existingTitleEntries = getTitleFavourites();
 
   // Add item if it's not already in the array, then store array again
   if (!existingEntries.includes(itemID)) {
@@ -270,6 +273,8 @@ function saveToLocalStorage(event) {
     setBlogFavourites(existingBlogEntries);
     existingImgEntries.push(itemImgUrl);
     setImgFavourites(existingImgEntries);
+    existingTitleEntries.push(itemTitle);
+    setTitleFavourites(existingTitleEntries);
 
 
     // Also turn the heart icon on as value is added to local storage
@@ -283,6 +288,8 @@ function saveToLocalStorage(event) {
     setBlogFavourites(existingBlogEntries);
     existingImgEntries.splice(itemIDindex, 1);
     setImgFavourites(existingImgEntries);
+    existingTitleEntries.splice(itemIDindex, 1);
+    setTitleFavourites(existingTitleEntries);
 
     // Also turn the heart icon off as value is removed from local storage
     $(this).siblings(".fas").css("opacity", "0");
@@ -308,6 +315,10 @@ function getImgFavourites() {
   return JSON.parse(localStorage.getItem("imgFavourites") || "[]");
 }
 
+function getTitleFavourites() {
+  return JSON.parse(localStorage.getItem("titleFavourites") || "[]");
+}
+
 
 
 // function to set values from array in local storage
@@ -321,6 +332,10 @@ function setBlogFavourites(favBlogArray) {
 
 function setImgFavourites(favImgArray) {
   localStorage.setItem("imgFavourites", JSON.stringify(favImgArray));
+}
+
+function setTitleFavourites(favTitleArray) {
+  localStorage.setItem("titleFavourites", JSON.stringify(favTitleArray));
 }
 
 function previousPage(event) {
