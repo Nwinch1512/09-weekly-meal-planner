@@ -30,6 +30,10 @@ h2 {
   font-family: "poppins", sans-serif;
 }
 
+body {
+  line-height: 1;
+}
+
 .jumbotron {
   background-image: url(/assets/image/spaghetti-gc1907a1cb_1920\ copy.jpg);
   background-size: cover;
