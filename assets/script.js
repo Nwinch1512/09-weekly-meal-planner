@@ -180,6 +180,9 @@ function displayRecipes(url) {
         .addClass("btn btn-danger favourite-btns")
         // add attribute as an identifier for favourite button
         .attr("id", mealID)
+        .attr("urlBlog", recipeURL)
+        .attr("urlImage", mealImgURL)
+        .attr("title",mealTitle)
         .text("Favourite");
       // Favourite icon created and added here
       let iOne = $("<i>").addClass("glyphicon far fa-heart");
@@ -251,15 +254,29 @@ $(document).on("click", ".favourite-btns", saveToLocalStorage);
 function saveToLocalStorage(event) {
   event.preventDefault();
   let itemID = $(this).attr("id");
+  let itemBlogUrl = $(this).attr("urlBlog");
+  let itemImgUrl = $(this).attr("urlImage");
+  let itemTitle = $(this).attr("title");
 
   // parse existing storage key or string representation of empty array (uses || operator, means
   // to take "lis_items" or if that is false take empty array '[]')
   var existingEntries = getFavourites();
+  var existingBlogEntries = getBlogFavourites();
+  var existingImgEntries = getImgFavourites();
+  var existingTitleEntries = getTitleFavourites();
 
   // Add item if it's not already in the array, then store array again
   if (!existingEntries.includes(itemID)) {
     existingEntries.push(itemID);
     setFavourites(existingEntries);
+    existingBlogEntries.push(itemBlogUrl);
+    setBlogFavourites(existingBlogEntries);
+    existingImgEntries.push(itemImgUrl);
+    setImgFavourites(existingImgEntries);
+    existingTitleEntries.push(itemTitle);
+    setTitleFavourites(existingTitleEntries);
+
+
     // Also turn the heart icon on as value is added to local storage
     $(this).siblings(".fas").css("opacity", "1");
   } else {
@@ -267,6 +284,13 @@ function saveToLocalStorage(event) {
     let itemIDindex = existingEntries.indexOf(itemID);
     existingEntries.splice(itemIDindex, 1);
     setFavourites(existingEntries);
+    existingBlogEntries.splice(itemIDindex, 1);
+    setBlogFavourites(existingBlogEntries);
+    existingImgEntries.splice(itemIDindex, 1);
+    setImgFavourites(existingImgEntries);
+    existingTitleEntries.splice(itemIDindex, 1);
+    setTitleFavourites(existingTitleEntries);
+
     // Also turn the heart icon off as value is removed from local storage
     $(this).siblings(".fas").css("opacity", "0");
   }
@@ -283,9 +307,35 @@ function getFavourites() {
   return JSON.parse(localStorage.getItem("favourites") || "[]");
 }
 
+function getBlogFavourites() {
+  return JSON.parse(localStorage.getItem("blogFavourites") || "[]");
+}
+
+function getImgFavourites() {
+  return JSON.parse(localStorage.getItem("imgFavourites") || "[]");
+}
+
+function getTitleFavourites() {
+  return JSON.parse(localStorage.getItem("titleFavourites") || "[]");
+}
+
+
+
 // function to set values from array in local storage
 function setFavourites(favArray) {
   localStorage.setItem("favourites", JSON.stringify(favArray));
+}
+
+function setBlogFavourites(favBlogArray) {
+  localStorage.setItem("blogFavourites", JSON.stringify(favBlogArray));
+}
+
+function setImgFavourites(favImgArray) {
+  localStorage.setItem("imgFavourites", JSON.stringify(favImgArray));
+}
+
+function setTitleFavourites(favTitleArray) {
+  localStorage.setItem("titleFavourites", JSON.stringify(favTitleArray));
 }
 
 function previousPage(event) {

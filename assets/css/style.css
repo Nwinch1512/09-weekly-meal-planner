@@ -112,3 +112,29 @@ body {
 #link-text {
   color: #fee1c7;
 }
+
+#favourites-table{
+  padding: 20px;
+  border-style: solid;
+  border-color: #000;
+  background-color: #fee1c7;
+}
+
+#top-row{
+  color: white;
+  background-color: #6b654b;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.entries-columns{
+  padding: 20px;
+  border-bottom-color: #000;
+}
+
+.entries-rows{
+  border-bottom-style: solid;
+  border-bottom-color: #000;
+}
+
+
