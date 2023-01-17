@@ -47,10 +47,10 @@ function appendRows(){
         .addClass("col-sm d-flex justify-content-center entries-columns");
         
         // Add button that links to blog to this column
-        let linkDiv = $("<div>");
-
+        let linkDiv = $("<div>"); 
+        
         let buttonLink = $("<button>")
-          .addClass("btn btn-danger")
+          .addClass("btn btn-danger button-link")
           // add attribute as an identifier for favourite button
           .attr("urlBlog", blogURLs[i])
           .text("Blog Link")
@@ -67,7 +67,7 @@ function appendRows(){
         let removeDiv = $("<div>");
 
         let buttonRemove = $("<button>")
-          .addClass("btn btn-danger")
+          .addClass("btn btn-danger btn-remove")
           // add attribute as an identifier for favourite button
           .attr("id", favouriteIDs[i])
           .text("X")
@@ -92,27 +92,84 @@ function appendRows(){
     appendRows();
 
 
-/*     // Code to control opening and closing of modal
+    // Function to load blog page when blog link button is clicked
+    $(document).on("click", ".button-link", openBlog);
 
-// Get the modal div from HTML
-var modal = $("#myModal");
+    function openBlog(event) {
+      
+      console.log(`${$(this).attr("urlBlog")}`);
+      event.preventDefault();
+      var url = `${$(this).attr("urlBlog")}`;
+      var win = window.open(url, '_blank');
+      win.focus();
+    }
 
-// Get the <span> element that closes the modal
-var span = $(".close")[0];
 
-// When the user clicks the cooking button, open the modal. This function is used
-// so appended buttons added by JS to document can be clicked on
+    // Function to remove from favourites when link button is clicked
+    $(document).on("click", ".btn-remove", removeMeal);
 
-$(document).on("click", ".modal-btns", openModal);
+    function removeMeal(event) {
+      
+      event.preventDefault();
 
-// Open Modal then
-function openModal(event) {
-  event.preventDefault();
-  modal.css("display", "block");
-  iframeWebsite($(this).attr("url"));
+      console.log(`${$(this).attr("id")}`);
+      
+      let itemID = $(this).attr("id");
+      
+      // parse existing storage key or string representation of empty array (uses || operator, means
+      // to take "lis_items" or if that is false take empty array '[]')
+      var existingEntries = getFavourites();
+      var existingBlogEntries = getBlogFavourites();
+      var existingImgEntries = getImgFavourites();
+      var existingTitleEntries = getTitleFavourites();
+
+      // if item is already there remove it, ie. 'unfavourite-ing' it
+      let itemIDindex = existingEntries.indexOf(itemID);
+      existingEntries.splice(itemIDindex, 1);
+      setFavourites(existingEntries);
+      existingBlogEntries.splice(itemIDindex, 1);
+      setBlogFavourites(existingBlogEntries);
+      existingImgEntries.splice(itemIDindex, 1);
+      setImgFavourites(existingImgEntries);
+      existingTitleEntries.splice(itemIDindex, 1);
+      setTitleFavourites(existingTitleEntries);
+
+      appendRows();
+    }
+    
+    
+  
+
+    // function to get values from local storage
+function getFavourites() {
+  return JSON.parse(localStorage.getItem("favourites") || "[]");
 }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  modal.css("display", "none");
-}; */
+function getBlogFavourites() {
+  return JSON.parse(localStorage.getItem("blogFavourites") || "[]");
+}
+
+function getImgFavourites() {
+  return JSON.parse(localStorage.getItem("imgFavourites") || "[]");
+}
+
+function getTitleFavourites() {
+  return JSON.parse(localStorage.getItem("titleFavourites") || "[]");
+}
+    
+// function to set values from array in local storage
+function setFavourites(favArray) {
+  localStorage.setItem("favourites", JSON.stringify(favArray));
+}
+
+function setBlogFavourites(favBlogArray) {
+  localStorage.setItem("blogFavourites", JSON.stringify(favBlogArray));
+}
+
+function setImgFavourites(favImgArray) {
+  localStorage.setItem("imgFavourites", JSON.stringify(favImgArray));
+}
+
+function setTitleFavourites(favTitleArray) {
+  localStorage.setItem("titleFavourites", JSON.stringify(favTitleArray));
+}
