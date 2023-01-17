@@ -139,7 +139,10 @@ function displayRecipes(url) {
       }
 
       //Need to figure out what unit price is measured in and display accordingly
-      let pricePerServing = response.results[i].pricePerServing;
+      let pricePerServing = (
+        (response.results[i].pricePerServing / 100) *
+        0.82
+      ).toFixed(2);
       let readyInMinutes = response.results[i].readyInMinutes;
       let calories = Math.trunc(
         response.results[i].nutrition.nutrients[0].amount
@@ -176,9 +179,9 @@ function displayRecipes(url) {
         .addClass("recipe-list-items")
         .css("color", "#fee1c7");
 
-      let priceEl = $("<li>").text(`Price per serving: ${pricePerServing}`);
+      let priceEl = $("<li>").text(`Price per serving: £${pricePerServing}`);
       let timeEl = $("<li>").text(`Time to prepare: ${readyInMinutes} minutes`);
-      let caloriesEl = $("<li>").text(`Calories: ${calories}`);
+      let caloriesEl = $("<li>").text(`Calories: ${calories} Kcal`);
 
       // Modal button and properties added here
       let buttonEl = $("<button>")
