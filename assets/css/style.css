@@ -83,6 +83,10 @@ body {
   background-color: #ff7e33;
 }
 
+.form-check-input {
+  margin-top: 0;
+}
+
 .form-check-input:checked {
   background-color: #ff7e33 !important;
 }

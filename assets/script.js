@@ -167,10 +167,16 @@ function displayRecipes(url) {
       console.log(`recipeURL: ${recipeURL}`);
 
       //Starting to think about recipe card display
+      let recipeCard = $("<div>").addClass(
+        "card-body col-lg-3 col-md-3 col-sm-6 text-center"
+      );
+      let image = $("<img>")
+        .addClass("card-img-top")
+        .attr("src", mealImgURL)
+        .attr("alt", "Card image cap");
       let recipeDiv = $("<div>")
-        .addClass("card-body col-lg-3 col-md-3 col-sm-6 text-center")
-        // .css("background-color", "rgb(107,101,75)");
-        .css("background-image", `url(${mealImgURL})`)
+        .addClass("card-body")
+        // .css("background-image", `url(${mealImgURL})`)
         .css("padding", "0");
       //recipeDiv.attr("id", "recipe-div");
       let headerEl = $("<h5>")
