@@ -29,9 +29,33 @@ let resultsContainer = $(".results-container");
 let currentPage = 0;
 let totalResults = 0;
 
+let masterchefImgQueryURL =
+  "https://api.giphy.com/v1/gifs/3oEjHC7al4GfnudR7y?api_key=NRE09HWQ0OyAMNBuz2iAsSYHuKKJkIV6";
+
+let masterchefHomeCooksGiphyID = "3oEjHC7al4GfnudR7y";
+// let cookingImgDiv = $(".cooking-image-div").css("display", "flex");
+
+$.ajax({
+  url: masterchefImgQueryURL,
+  method: "GET",
+}).then(function (response) {
+  console.log(response);
+  let cookingImgURL = response.data.images.original.url;
+  let cookingImgTitle = response.data.images.title;
+  console.log(cookingImgURL);
+  let cookingImg = $("<img>")
+    .attr("src", cookingImgURL)
+    .attr("alt", "image of chef cooking food in a pan")
+    .attr("title", cookingImgTitle)
+    .css("margin-left", "auto")
+    .css("margin-right", "auto")
+    .css("padding", "20px");
+  resultsContainer.append(cookingImg);
+});
+
 function searchRecipesHandler(event) {
   event.preventDefault();
-
+  resultsContainer.empty();
   // Reset pagination
   prevBtn.hide();
   nextBtn.hide();
@@ -182,7 +206,7 @@ function displayRecipes(url) {
         .attr("id", mealID)
         .attr("urlBlog", recipeURL)
         .attr("urlImage", mealImgURL)
-        .attr("title",mealTitle)
+        .attr("title", mealTitle)
         .text("Favourite");
       // Favourite icon created and added here
       let iOne = $("<i>").addClass("glyphicon far fa-heart");
@@ -276,7 +300,6 @@ function saveToLocalStorage(event) {
     existingTitleEntries.push(itemTitle);
     setTitleFavourites(existingTitleEntries);
 
-
     // Also turn the heart icon on as value is added to local storage
     $(this).siblings(".fas").css("opacity", "1");
   } else {
@@ -318,8 +341,6 @@ function getImgFavourites() {
 function getTitleFavourites() {
   return JSON.parse(localStorage.getItem("titleFavourites") || "[]");
 }
-
-
 
 // function to set values from array in local storage
 function setFavourites(favArray) {
