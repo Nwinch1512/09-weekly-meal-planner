@@ -170,8 +170,9 @@ function displayRecipes(url) {
       let recipeCard = $("<div>").addClass(
         "card-body col-lg-3 col-md-3 col-sm-6 text-center"
       );
-      let image = $("<img>")
+      let recipeImg = $("<img>")
         .addClass("card-img-top")
+        .attr("src", mealImgURL)
         .attr("src", mealImgURL)
         .attr("alt", "Card image cap");
       let recipeDiv = $("<div>")
@@ -184,12 +185,9 @@ function displayRecipes(url) {
         .text(mealTitle)
         .css("font-weight", "bold");
 
-      let recipeImg = $("<img>").attr("src", mealImgURL);
-
       let recipeURLEL = $("<a href>").attr("href", `${recipeURL}`);
       let recipeEl = $("<ul>")
         .css("list-style", "none")
-
         .addClass("card-text")
         .addClass("recipe-list-items");
 
@@ -239,7 +237,8 @@ function displayRecipes(url) {
       favouriteDiv.append(buttonFavourite, iOne, iTwo);
       recipeDiv.append(headerEl, recipeEl, buttonEl, favouriteDiv);
       recipeEl.append(priceEl, timeEl, caloriesEl);
-      recipesContainerDiv.append(recipeDiv);
+      recipesContainerDiv.append(recipeCard);
+      recipeCard.append(recipeImg, recipeDiv);
     }
   });
 }
