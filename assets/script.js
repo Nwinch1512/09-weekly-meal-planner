@@ -50,7 +50,7 @@ $.ajax({
     .css("margin-left", "auto")
     .css("margin-right", "auto")
     .css("padding", "20px");
-  resultsContainer.append(cookingImg);
+  resultsContainer.append(cookingImg).css("display", "flex");
 });
 
 function searchRecipesHandler(event) {
@@ -123,7 +123,9 @@ function searchRecipes() {
 function displayRecipes(url) {
   resultsContainer.empty();
   recipesContainerDiv.empty();
-  let resultsHeading = $("<h2>").text("Try one of these recipes!");
+  let resultsHeading = $("<h2>")
+    .text("Try one of these recipes!")
+    .addClass("results-heading");
   resultsContainer.append(resultsHeading);
 
   $.ajax({
