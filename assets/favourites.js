@@ -16,12 +16,11 @@ function appendRows(){
     
       // Take array of locations from local storage and loop through them
       var favouriteIDs = JSON.parse(localStorage.getItem("favourites"));
-      var imgURLs = JSON.parse(localStorage.getItem("blogFavourites"));
-      var blogURLs = JSON.parse(localStorage.getItem("imgFavourites"));
+      var imgURLs = JSON.parse(localStorage.getItem("imgFavourites"));
+      var blogURLs = JSON.parse(localStorage.getItem("blogFavourites"));
       var mealTitles = JSON.parse(localStorage.getItem("titleFavourites"));
 
-      
-    
+          
       for (var i = 0; i < favouriteIDs.length; i++) {
     
         // New row
@@ -35,6 +34,13 @@ function appendRows(){
         var columnTwo = $("<div>")
         .addClass("col-sm d-flex justify-content-center entries-columns");
         // Add meal image to this column
+        let mealImg = $("<img>")
+          .attr("src", imgURLs[i])
+          .attr("alt", "image of meal")
+          .attr("title", mealTitles[i])
+          .css("margin-left", "auto")
+          .css("margin-right", "auto")
+          columnTwo.append(mealImg);
 
         var columnThree = $("<div>")
         .addClass("col-sm d-flex justify-content-center entries-columns");
