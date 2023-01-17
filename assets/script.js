@@ -182,7 +182,7 @@ function displayRecipes(url) {
         // .css("background-image", `url(${mealImgURL})`)
 
         .css("background-color", "#6B654B")
-        .css("height", "300px")
+        .css("min-height", "300px")
         .attr("id", "recipe-div");
       let headerEl = $("<h6>")
         .addClass("card-title")
