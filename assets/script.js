@@ -167,9 +167,9 @@ function displayRecipes(url) {
       console.log(`recipeURL: ${recipeURL}`);
 
       //Starting to think about recipe card display
-      let recipeCard = $("<div>").addClass(
-        "card-body col-lg-3 col-md-3 col-sm-6 text-center"
-      );
+      let recipeCard = $("<div>")
+        .addClass("card-body col-lg-3 col-md-3 col-sm-6 text-center")
+        .css("padding", "10px");
       let recipeImg = $("<img>")
         .addClass("card-img-top")
         .attr("src", mealImgURL)
@@ -178,18 +178,22 @@ function displayRecipes(url) {
       let recipeDiv = $("<div>")
         .addClass("card-body")
         // .css("background-image", `url(${mealImgURL})`)
-        .css("padding", "0");
-      //recipeDiv.attr("id", "recipe-div");
-      let headerEl = $("<h5>")
+
+        .css("background-color", "#6B654B")
+        .css("height", "290px")
+        .attr("id", "recipe-div");
+      let headerEl = $("<h6>")
         .addClass("card-title")
         .text(mealTitle)
         .css("font-weight", "bold");
+      // .css("color", "#FF7E33");
 
       let recipeURLEL = $("<a href>").attr("href", `${recipeURL}`);
       let recipeEl = $("<ul>")
         .css("list-style", "none")
         .addClass("card-text")
-        .addClass("recipe-list-items");
+        .addClass("recipe-list-items")
+        .css("color", "#fee1c7");
 
       let priceEl = $("<li>").text(`Price per serving: ${pricePerServing}`);
       let timeEl = $("<li>").text(`Minutes to prepare meal: ${readyInMinutes}`);
@@ -200,7 +204,11 @@ function displayRecipes(url) {
         .addClass("btn btn-secondary modal-btns")
         // add attribute as an identifier for modal button to use to get recipie info from API
         .attr("url", recipeURL)
-        .text("Cooking instructions");
+
+        .text("Cooking instructions")
+        .css("background-color", "#FF7E33")
+        .css("border-color", "#FF7E33")
+        .css("margin-bottom", "5px");
 
       // Favourite button div
       let favouriteDiv = $("<div>");
@@ -213,7 +221,9 @@ function displayRecipes(url) {
         .attr("urlBlog", recipeURL)
         .attr("urlImage", mealImgURL)
         .attr("title", mealTitle)
-        .text("Favourite");
+        .text("Favourite")
+        .css("background-color", "#9A031E")
+        .css("border-color", "#9A031E");
       // Favourite icon created and added here
       let iOne = $("<i>").addClass("glyphicon far fa-heart");
       let iTwo = $("<i>").addClass("glyphicon fas fa-heart");
