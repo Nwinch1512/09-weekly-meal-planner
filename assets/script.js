@@ -125,7 +125,15 @@ function displayRecipes(url) {
   recipesContainerDiv.empty();
   let resultsHeading = $("<h2>")
     .text("Try one of these recipes!")
-    .addClass("results-heading");
+    .addClass("results-heading")
+    .css({
+      width: "100%",
+      "font-weight": "bold",
+      "background-color": "#9A031E",
+      color: "#FEE1C7",
+      padding: "5px",
+    });
+
   resultsContainer.append(resultsHeading);
 
   $.ajax({
@@ -159,17 +167,11 @@ function displayRecipes(url) {
       );
       let mealImgURL = response.results[i].image;
       let recipeURL = response.results[i].sourceUrl;
-      console.log(`pricePerServing: ${pricePerServing}`);
-      console.log(`readyInMinutes: ${readyInMinutes}`);
-      console.log(`calories: ${calories}`);
-      console.log(`mealImgURL: ${mealImgURL}`);
-      console.log(`mealID: ${mealID}`);
-      console.log(`recipeURL: ${recipeURL}`);
 
       //Starting to think about recipe card display
       let recipeCard = $("<div>")
         .addClass("card-body col-lg-3 col-md-3 col-sm-6 text-center")
-        .css("padding", "10px");
+        .css("margin-bottom", "10px");
       let recipeImg = $("<img>")
         .addClass("card-img-top")
         .attr("src", mealImgURL)
@@ -180,7 +182,7 @@ function displayRecipes(url) {
         // .css("background-image", `url(${mealImgURL})`)
 
         .css("background-color", "#6B654B")
-        .css("height", "290px")
+        .css("height", "300px")
         .attr("id", "recipe-div");
       let headerEl = $("<h6>")
         .addClass("card-title")
@@ -196,7 +198,7 @@ function displayRecipes(url) {
         .css("color", "#fee1c7");
 
       let priceEl = $("<li>").text(`Price per serving: ${pricePerServing}`);
-      let timeEl = $("<li>").text(`Minutes to prepare meal: ${readyInMinutes}`);
+      let timeEl = $("<li>").text(`Time to prepare: ${readyInMinutes} minutes`);
       let caloriesEl = $("<li>").text(`Calories: ${calories}`);
 
       // Modal button and properties added here
