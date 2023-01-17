@@ -120,7 +120,7 @@ function displayRecipes(url) {
     for (let i = 0; i < response.results.length; i++) {
       let mealTitle = response.results[i].title;
       let mealID = response.results[i].id;
-      let position = response.results[i] + 1;
+      let position = currentPage * pageSize + i + 1;
 
       // total results dictates whether there are more pages to show so only show the next button if there is a next page
       totalResults = response.totalResults;
