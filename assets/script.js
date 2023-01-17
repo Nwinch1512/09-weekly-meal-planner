@@ -1,6 +1,6 @@
 // Constants
 // API key for calling spoonacular
-const APIKey = "2f346a836aae470092494ca66fe7f8fa";
+const APIKey = "fc139f3d6d994b12a4880e135905a820";
 // Number of results to show per page
 const pageSize = 4;
 
@@ -17,6 +17,8 @@ prevBtn.hide();
 let nextBtn = $(".next");
 nextBtn.on("click", nextPage);
 nextBtn.hide();
+let totalResultsEl = $(".display-results-span");
+totalResultsEl.hide();
 
 let searchBtn = $(".submit");
 searchBtn.on("click", searchRecipesHandler);
@@ -59,6 +61,7 @@ function searchRecipesHandler(event) {
   // Reset pagination
   prevBtn.hide();
   nextBtn.hide();
+  totalResultsEl.hide();
   currentPage = 0;
   totalResults = 0;
 
@@ -89,35 +92,8 @@ function searchRecipes() {
   let offset = currentPage * pageSize;
 
   let userInputQueryURL = `https://api.spoonacular.com/recipes/complexSearch?type=main&addRecipeInformation=true&addRecipeNutrition=true&apiKey=${APIKey}&intolerances=${intolerancesString}${specialDietQueryText}${cuisineQueryText}${timeToPrepQueryText}&number=${pageSize}&offset=${offset}`;
-  console.log(intolerancesString);
-  console.log(specialDiet);
-  console.log(timeToPrep);
-  console.log(cuisine);
-  console.log(userInputQueryURL);
   displayRecipes(userInputQueryURL);
 }
-
-// queryURL for searching recipes
-// let queryURL = `https://api.spoonacular.com/recipes/complexSearch?&number=7&type=main&addRecipeInformation=true&addRecipeNutrition=true&apiKey=${APIKey}&diet=low fodmap&intolerances=peanut`;
-
-// Checking results for diet and intolerances by hardcoding URL
-// let queryURL = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${APIKey}&diet=pescetarian&intolerances=egg&maxReadyTime=25`;
-
-//This query url includes the following variables we can search by:
-// includeIngredients - A comma-separated list of ingredients that should/must be used in the recipes.
-//cuisine - type of cuisine e.g. Greek, Thai, Italian, French, full list here: https://spoonacular.com/food-api/docs#Cuisines
-//intolerances - foods to exclude e.g. dairy, peanut, gluten, full list here: https://spoonacular.com/food-api/docs#Intolerances
-//diet - e.g vegan, vegetarian, full list here: https://spoonacular.com/food-api/docs#Diets
-//addRecipeInformation - set to true to get more recipe information.  This gives us the link to the recipe that we will follow.  This also gives us the price per serving information.
-//addRecipeNutrition - set to true to get more nutrition information e.g. calories per portion.
-
-// Build function to develop queryurl based on user inputs - hardcoded values for now but will replace with userinput.val().trim();
-// User input values
-// let mainIng
-// let maxReadyTimeInput = 20;
-// let cuisine = italian;
-// let diet = vegan;
-// let price =
 
 //Function to display recipes
 function displayRecipes(url) {
@@ -144,14 +120,17 @@ function displayRecipes(url) {
     for (let i = 0; i < response.results.length; i++) {
       let mealTitle = response.results[i].title;
       let mealID = response.results[i].id;
+      let position = response.results[i] + 1;
 
       // total results dictates whether there are more pages to show so only show the next button if there is a next page
       totalResults = response.totalResults;
       console.log(totalResults);
       if (totalResults > currentPage * pageSize) {
         nextBtn.show();
+        totalResultsEl.show().text(`${totalResults} results`);
       } else {
         nextBtn.hide();
+        totalResultsEl.hide();
       }
       if (currentPage > 0) {
         prevBtn.show();
@@ -246,8 +225,17 @@ function displayRecipes(url) {
 
       checkIcon(mealID);
 
+      let recipeResultsPositionEl = $("<span>")
+        .text(`Showing ${position} of ${totalResults} results`)
+        .css("color", "#fee1c7");
       favouriteDiv.append(buttonFavourite, iOne, iTwo);
-      recipeDiv.append(headerEl, recipeEl, buttonEl, favouriteDiv);
+      recipeDiv.append(
+        headerEl,
+        recipeEl,
+        buttonEl,
+        favouriteDiv,
+        recipeResultsPositionEl
+      );
       recipeEl.append(priceEl, timeEl, caloriesEl);
       recipesContainerDiv.append(recipeCard);
       recipeCard.append(recipeImg, recipeDiv);

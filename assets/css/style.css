@@ -199,3 +199,9 @@ body {
 .results-container {
   padding: 0px;
 }
+
+.display-results-span {
+  margin: 5px;
+  font-weight: bold;
+  padding: 5px;
+}
