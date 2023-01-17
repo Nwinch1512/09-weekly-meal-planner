@@ -44,6 +44,60 @@ body {
   display: none;
 }
 
+#search-criteria-form {
+  padding: 30px;
+}
+
+#intolerances-list {
+  column-count: 2;
+  column-gap: 2rem;
+  list-style: none;
+}
+
+.submit {
+  background-color: #fee1c7;
+  border-color: #fee1c7;
+  color: #9a031e;
+}
+
+.submit:hover,
+.next:hover,
+.previous:hover {
+  background-color: #ff7e33 !important;
+  border-color: #ff7e33 !important;
+  color: #fee1c7 !important;
+}
+
+.submit:focus,
+.next:focus,
+.previous:focus {
+  box-shadow: 0 0 0 0.2rem #6b654b;
+}
+
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.05rem #ff7e33;
+}
+
+.form-control:hover {
+  background-color: #ff7e33;
+}
+
+.form-check-input {
+  margin-top: 0;
+}
+
+.form-check-input:checked {
+  background-color: #ff7e33 !important;
+}
+
+.next,
+.previous {
+  background-color: #9a031e;
+  border-color: #9a031e;
+  color: #fee1c7;
+}
+
 /* Initial placeholder CSS styling added for modal */
 
 /* The Modal (background) */
@@ -113,28 +167,41 @@ body {
   color: #fee1c7;
 }
 
-#favourites-table{
+#favourites-table {
   padding: 20px;
   border-style: solid;
   border-color: #000;
   background-color: #fee1c7;
 }
 
-#top-row{
+#top-row {
   color: white;
   background-color: #6b654b;
   padding-bottom: 10px;
   padding-top: 10px;
 }
 
-.entries-columns{
+.entries-columns {
   padding: 20px;
   border-bottom-color: #000;
 }
 
-.entries-rows{
+.entries-rows {
   border-bottom-style: solid;
   border-bottom-color: #000;
 }
 
+.recipe-results {
+  padding-left: 50px;
+  padding-right: 50px;
+}
 
+.results-container {
+  padding: 0px;
+}
+
+.display-results-span {
+  margin: 5px;
+  font-weight: bold;
+  padding: 5px;
+}

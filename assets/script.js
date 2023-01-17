@@ -1,6 +1,6 @@
 // Constants
 // API key for calling spoonacular
-const APIKey = "2f346a836aae470092494ca66fe7f8fa";
+const APIKey = "fc139f3d6d994b12a4880e135905a820";
 // Number of results to show per page
 const pageSize = 4;
 
@@ -17,6 +17,8 @@ prevBtn.hide();
 let nextBtn = $(".next");
 nextBtn.on("click", nextPage);
 nextBtn.hide();
+let totalResultsEl = $(".display-results-span");
+totalResultsEl.hide();
 
 let searchBtn = $(".submit");
 searchBtn.on("click", searchRecipesHandler);
@@ -29,12 +31,37 @@ let resultsContainer = $(".results-container");
 let currentPage = 0;
 let totalResults = 0;
 
+let masterchefImgQueryURL =
+  "https://api.giphy.com/v1/gifs/3oEjHC7al4GfnudR7y?api_key=NRE09HWQ0OyAMNBuz2iAsSYHuKKJkIV6";
+
+let masterchefHomeCooksGiphyID = "3oEjHC7al4GfnudR7y";
+// let cookingImgDiv = $(".cooking-image-div").css("display", "flex");
+
+$.ajax({
+  url: masterchefImgQueryURL,
+  method: "GET",
+}).then(function (response) {
+  console.log(response);
+  let cookingImgURL = response.data.images.original.url;
+  let cookingImgTitle = response.data.images.title;
+  console.log(cookingImgURL);
+  let cookingImg = $("<img>")
+    .attr("src", cookingImgURL)
+    .attr("alt", "image of chef cooking food in a pan")
+    .attr("title", cookingImgTitle)
+    .css("margin-left", "auto")
+    .css("margin-right", "auto")
+    .css("padding", "20px");
+  resultsContainer.append(cookingImg).css("display", "flex");
+});
+
 function searchRecipesHandler(event) {
   event.preventDefault();
-
+  resultsContainer.empty();
   // Reset pagination
   prevBtn.hide();
   nextBtn.hide();
+  totalResultsEl.hide();
   currentPage = 0;
   totalResults = 0;
 
@@ -65,41 +92,24 @@ function searchRecipes() {
   let offset = currentPage * pageSize;
 
   let userInputQueryURL = `https://api.spoonacular.com/recipes/complexSearch?type=main&addRecipeInformation=true&addRecipeNutrition=true&apiKey=${APIKey}&intolerances=${intolerancesString}${specialDietQueryText}${cuisineQueryText}${timeToPrepQueryText}&number=${pageSize}&offset=${offset}`;
-  console.log(intolerancesString);
-  console.log(specialDiet);
-  console.log(timeToPrep);
-  console.log(cuisine);
-  console.log(userInputQueryURL);
   displayRecipes(userInputQueryURL);
 }
-
-// queryURL for searching recipes
-// let queryURL = `https://api.spoonacular.com/recipes/complexSearch?&number=7&type=main&addRecipeInformation=true&addRecipeNutrition=true&apiKey=${APIKey}&diet=low fodmap&intolerances=peanut`;
-
-// Checking results for diet and intolerances by hardcoding URL
-// let queryURL = `https://api.spoonacular.com/recipes/complexSearch?&apiKey=${APIKey}&diet=pescetarian&intolerances=egg&maxReadyTime=25`;
-
-//This query url includes the following variables we can search by:
-// includeIngredients - A comma-separated list of ingredients that should/must be used in the recipes.
-//cuisine - type of cuisine e.g. Greek, Thai, Italian, French, full list here: https://spoonacular.com/food-api/docs#Cuisines
-//intolerances - foods to exclude e.g. dairy, peanut, gluten, full list here: https://spoonacular.com/food-api/docs#Intolerances
-//diet - e.g vegan, vegetarian, full list here: https://spoonacular.com/food-api/docs#Diets
-//addRecipeInformation - set to true to get more recipe information.  This gives us the link to the recipe that we will follow.  This also gives us the price per serving information.
-//addRecipeNutrition - set to true to get more nutrition information e.g. calories per portion.
-
-// Build function to develop queryurl based on user inputs - hardcoded values for now but will replace with userinput.val().trim();
-// User input values
-// let mainIng
-// let maxReadyTimeInput = 20;
-// let cuisine = italian;
-// let diet = vegan;
-// let price =
 
 //Function to display recipes
 function displayRecipes(url) {
   resultsContainer.empty();
   recipesContainerDiv.empty();
-  let resultsHeading = $("<h2>").text("Try one of these recipes!");
+  let resultsHeading = $("<h2>")
+    .text("Try one of these recipes!")
+    .addClass("results-heading")
+    .css({
+      width: "100%",
+      "font-weight": "bold",
+      "background-color": "#9A031E",
+      color: "#FEE1C7",
+      padding: "5px",
+    });
+
   resultsContainer.append(resultsHeading);
 
   $.ajax({
@@ -110,14 +120,17 @@ function displayRecipes(url) {
     for (let i = 0; i < response.results.length; i++) {
       let mealTitle = response.results[i].title;
       let mealID = response.results[i].id;
+      let position = currentPage * pageSize + i + 1;
 
       // total results dictates whether there are more pages to show so only show the next button if there is a next page
       totalResults = response.totalResults;
       console.log(totalResults);
       if (totalResults > currentPage * pageSize) {
         nextBtn.show();
+        totalResultsEl.show().text(`${totalResults} results`);
       } else {
         nextBtn.hide();
+        totalResultsEl.hide();
       }
       if (currentPage > 0) {
         prevBtn.show();
@@ -126,51 +139,60 @@ function displayRecipes(url) {
       }
 
       //Need to figure out what unit price is measured in and display accordingly
-      let pricePerServing = response.results[i].pricePerServing;
+      let pricePerServing = (
+        (response.results[i].pricePerServing / 100) *
+        0.82
+      ).toFixed(2);
       let readyInMinutes = response.results[i].readyInMinutes;
       let calories = Math.trunc(
         response.results[i].nutrition.nutrients[0].amount
       );
       let mealImgURL = response.results[i].image;
       let recipeURL = response.results[i].sourceUrl;
-      console.log(`pricePerServing: ${pricePerServing}`);
-      console.log(`readyInMinutes: ${readyInMinutes}`);
-      console.log(`calories: ${calories}`);
-      console.log(`mealImgURL: ${mealImgURL}`);
-      console.log(`mealID: ${mealID}`);
-      console.log(`recipeURL: ${recipeURL}`);
 
       //Starting to think about recipe card display
-      let recipeDiv = $("<div>")
+      let recipeCard = $("<div>")
         .addClass("card-body col-lg-3 col-md-3 col-sm-6 text-center")
-        // .css("background-color", "rgb(107,101,75)");
-        .css("background-image", `url(${mealImgURL})`)
-        .css("padding", "0");
-      //recipeDiv.attr("id", "recipe-div");
-      let headerEl = $("<h5>")
+        .css("margin-bottom", "10px");
+      let recipeImg = $("<img>")
+        .addClass("card-img-top")
+        .attr("src", mealImgURL)
+        .attr("src", mealImgURL)
+        .attr("alt", "Card image cap");
+      let recipeDiv = $("<div>")
+        .addClass("card-body")
+        // .css("background-image", `url(${mealImgURL})`)
+
+        .css("background-color", "#6B654B")
+        .css("min-height", "300px")
+        .attr("id", "recipe-div");
+      let headerEl = $("<h6>")
         .addClass("card-title")
         .text(mealTitle)
         .css("font-weight", "bold");
-
-      let recipeImg = $("<img>").attr("src", mealImgURL);
+      // .css("color", "#FF7E33");
 
       let recipeURLEL = $("<a href>").attr("href", `${recipeURL}`);
       let recipeEl = $("<ul>")
         .css("list-style", "none")
-
         .addClass("card-text")
-        .addClass("recipe-list-items");
+        .addClass("recipe-list-items")
+        .css("color", "#fee1c7");
 
-      let priceEl = $("<li>").text(`Price per serving: ${pricePerServing}`);
-      let timeEl = $("<li>").text(`Minutes to prepare meal: ${readyInMinutes}`);
-      let caloriesEl = $("<li>").text(`Calories: ${calories}`);
+      let priceEl = $("<li>").text(`Price per serving: £${pricePerServing}`);
+      let timeEl = $("<li>").text(`Time to prepare: ${readyInMinutes} minutes`);
+      let caloriesEl = $("<li>").text(`Calories: ${calories} Kcal`);
 
       // Modal button and properties added here
       let buttonEl = $("<button>")
         .addClass("btn btn-secondary modal-btns")
         // add attribute as an identifier for modal button to use to get recipie info from API
         .attr("url", recipeURL)
-        .text("Cooking instructions");
+
+        .text("Cooking instructions")
+        .css("background-color", "#FF7E33")
+        .css("border-color", "#FF7E33")
+        .css("margin-bottom", "5px");
 
       // Favourite button div
       let favouriteDiv = $("<div>");
@@ -182,8 +204,10 @@ function displayRecipes(url) {
         .attr("id", mealID)
         .attr("urlBlog", recipeURL)
         .attr("urlImage", mealImgURL)
-        .attr("title",mealTitle)
-        .text("Favourite");
+        .attr("title", mealTitle)
+        .text("Favourite")
+        .css("background-color", "#9A031E")
+        .css("border-color", "#9A031E");
       // Favourite icon created and added here
       let iOne = $("<i>").addClass("glyphicon far fa-heart");
       let iTwo = $("<i>").addClass("glyphicon fas fa-heart");
@@ -204,10 +228,20 @@ function displayRecipes(url) {
 
       checkIcon(mealID);
 
+      let recipeResultsPositionEl = $("<span>")
+        .text(`Showing ${position} of ${totalResults} results`)
+        .css("color", "#fee1c7");
       favouriteDiv.append(buttonFavourite, iOne, iTwo);
-      recipeDiv.append(headerEl, recipeEl, buttonEl, favouriteDiv);
+      recipeDiv.append(
+        headerEl,
+        recipeEl,
+        buttonEl,
+        favouriteDiv,
+        recipeResultsPositionEl
+      );
       recipeEl.append(priceEl, timeEl, caloriesEl);
-      recipesContainerDiv.append(recipeDiv);
+      recipesContainerDiv.append(recipeCard);
+      recipeCard.append(recipeImg, recipeDiv);
     }
   });
 }
@@ -276,7 +310,6 @@ function saveToLocalStorage(event) {
     existingTitleEntries.push(itemTitle);
     setTitleFavourites(existingTitleEntries);
 
-
     // Also turn the heart icon on as value is added to local storage
     $(this).siblings(".fas").css("opacity", "1");
   } else {
@@ -318,8 +351,6 @@ function getImgFavourites() {
 function getTitleFavourites() {
   return JSON.parse(localStorage.getItem("titleFavourites") || "[]");
 }
-
-
 
 // function to set values from array in local storage
 function setFavourites(favArray) {

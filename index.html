@@ -110,10 +110,12 @@
               <h4>Tailor your recipe search:</h4>
 
               <!-- Intolerance checkboxes -->
-
+           
               <div class="form-group checkboxes">
                 <p>Please tick any intolerances/allergies you have.</p>
+                <ul id="intolerances-list">
                 <div class="form-check">
+                  
                   <input
                     class="form-check-input"
                     type="checkbox"
@@ -257,6 +259,7 @@
                     Wheat
                   </label>
                 </div>
+              </ul>
               </div>
 
               <!-- Diet dropdown -->
@@ -323,7 +326,7 @@
               </button>
             </form>
           </aside>
-          <div class="col-lg-9 pb-3">
+          <div class="col-lg-9 pb-3 recipe-results">
             <section
               id="recipe-results-section"
               class="mt-3"
@@ -334,6 +337,8 @@
                 
               </div>
               <div class="row" id="recipe-results">
+<!-- Container for placeholder giphy before recipe results load -->
+                <div class="cooking-image-div"></div>
                 <!-- Recipe cards will be created dynamically in JS -->
                 
                 </div>
@@ -341,6 +346,7 @@
                   Previous
                 </button>
                 <button class="btn btn-primary next" type="submit">Next</button>
+                <span class="display-results-span"></span>
               </div>
               
             </section>
