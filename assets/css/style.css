@@ -44,6 +44,56 @@ body {
   display: none;
 }
 
+#search-criteria-form {
+  padding: 30px;
+}
+
+#intolerances-list {
+  column-count: 2;
+  column-gap: 2rem;
+  list-style: none;
+}
+
+.submit {
+  background-color: #fee1c7;
+  border-color: #fee1c7;
+  color: #9a031e;
+}
+
+.submit:hover,
+.next:hover,
+.previous:hover {
+  background-color: #ff7e33 !important;
+  border-color: #ff7e33 !important;
+  color: #fee1c7 !important;
+}
+
+.submit:focus,
+.next:focus,
+.previous:focus {
+  box-shadow: 0 0 0 0.2rem #6b654b;
+}
+
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.05rem #ff7e33;
+}
+
+.form-control:hover {
+  background-color: #ff7e33;
+}
+
+.form-check-input:checked {
+  background-color: #ff7e33 !important;
+}
+
+.next,
+.previous {
+  background-color: #9a031e;
+  border-color: #9a031e;
+  color: #fee1c7;
+}
+
 /* Initial placeholder CSS styling added for modal */
 
 /* The Modal (background) */
@@ -140,31 +190,4 @@ body {
 .recipe-results {
   padding-left: 50px;
   padding-right: 50px;
-}
-
-.submit {
-  background-color: #fee1c7;
-  border-color: #fee1c7;
-  color: #9a031e;
-}
-
-.submit:hover,
-.next:hover,
-.previous:hover {
-  background-color: #ff7e33 !important;
-  border-color: #ff7e33 !important;
-  color: #fee1c7 !important;
-}
-
-.submit:focus,
-.next:focus,
-.previous:focus {
-  box-shadow: 0 0 0 0.2rem #6b654b;
-}
-
-.next,
-.previous {
-  background-color: #9a031e;
-  border-color: #9a031e;
-  color: #fee1c7;
 }
