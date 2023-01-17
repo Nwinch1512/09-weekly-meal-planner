@@ -4,15 +4,39 @@ let tableContainer = $("#favourites-table")
 
 
 
-
-
-
 // Function to append   
 function appendRows(){
 
     // Deleting rows prior to adding new movies
       // (this may be necessary otherwise there will be repeat rows when row removed function is used)
-      // tableContainer.empty();
+      tableContainer.empty();
+
+      // Add header row
+      var headerRow = $("<div>")
+      .addClass("row")
+      .attr("id", "top-row");
+
+      var headerColumnOne = $("<div>")
+      .addClass("col-sm d-flex justify-content-center lead")
+      .text("Meal name");
+
+      var headerColumnTwo = $("<div>")
+      .addClass("col-sm d-flex justify-content-center lead")
+      .text("Meal picture");
+      
+      var headerColumnThree = $("<div>")
+      .addClass("col-sm d-flex justify-content-center lead")
+      .text("Cooking instructions");
+
+      var headerColumnFour = $("<div>")
+      .addClass("col-sm d-flex justify-content-center lead")
+      .text("Remove");
+     
+      headerRow.append(headerColumnOne, headerColumnTwo, headerColumnThree, headerColumnFour);
+
+      tableContainer.append(headerRow);
+
+      
     
       // Take array of locations from local storage and loop through them
       var favouriteIDs = JSON.parse(localStorage.getItem("favourites"));
@@ -82,9 +106,6 @@ function appendRows(){
         newRow.append(columnOne, columnTwo, columnThree, columnFour);
 
         tableContainer.append(newRow);
-
-
-      
     };
 }
     
