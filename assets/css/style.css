@@ -201,7 +201,17 @@ body {
 }
 
 .display-results-span {
-  margin: 5px;
+  margin-top: 5px;
   font-weight: bold;
   padding: 5px;
 }
+
+@media (max-width: 412px) {
+  .cooking-image {
+    max-width: 325px;
+    padding-right: 50px;
+  }
+  .recipe-results {
+    padding-left: 25px;
+  }
+} ;

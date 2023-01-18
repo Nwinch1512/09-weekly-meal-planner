@@ -54,7 +54,7 @@ let giphyIDArray = [
   "6utVufdWch09PxqXgV",
   "xUPJPhnAzy86MR7WmI",
   "26BkLTOQWzao2Cz6g",
-  "yTysM6hgQlUSaxR7zY", //maybe replace
+  "3KVQSE46qbEOhq2Jo9",
   "3o85xG3XDsgCLuGC52",
   "oFy0DysfL2nGG0W6Gr",
   "1w37lihlJHnUqN0uQZ",
@@ -94,6 +94,7 @@ $.ajax({
     .attr("src", cookingImgURL)
     .attr("alt", "image of chef cooking food in a pan")
     .attr("title", cookingImgTitle)
+    .addClass("cooking-image")
     .css("margin-left", "auto")
     .css("margin-right", "auto")
     .css("padding", "20px");
@@ -152,7 +153,7 @@ function displayRecipes(url) {
       "font-weight": "bold",
       "background-color": "#9A031E",
       color: "#FEE1C7",
-      padding: "5px",
+      padding: "10px",
     });
 
   resultsContainer.append(resultsHeading);
@@ -211,10 +212,10 @@ function displayRecipes(url) {
         .css("background-color", "#6B654B")
         .css("min-height", "300px")
         .attr("id", "recipe-div");
-      let headerEl = $("<h6>")
-        .addClass("card-title")
-        .text(mealTitle)
-        .css("font-weight", "bold");
+      let headerEl = $("<h6>").addClass("card-title").text(mealTitle).css({
+        "font-weight": "bold",
+        "min-height": "90px",
+      });
       // .css("color", "#FF7E33");
 
       let recipeURLEL = $("<a href>").attr("href", `${recipeURL}`);
@@ -240,7 +241,10 @@ function displayRecipes(url) {
         .css("margin-bottom", "5px");
 
       // Favourite button div
-      let favouriteDiv = $("<div>");
+      let favouriteDiv = $("<div>").css({
+        "margin-bottom": "7px",
+        "margin-top": "5px",
+      });
 
       // Favourite button created and added to card here
       let buttonFavourite = $("<button>")
