@@ -79,17 +79,14 @@ let giphyIDArray = [
 ];
 
 let randomFoodGiphy = giphyIDArray[Math.floor(Math.random() * 40)];
-console.log(randomFoodGiphy);
 let giphyImgQueryURL = `https://api.giphy.com/v1/gifs/${randomFoodGiphy}?api_key=NRE09HWQ0OyAMNBuz2iAsSYHuKKJkIV6`;
 
 $.ajax({
   url: giphyImgQueryURL,
   method: "GET",
 }).then(function (response) {
-  console.log(response);
   let cookingImgURL = response.data.images.original.url;
   let cookingImgTitle = response.data.images.title;
-  console.log(cookingImgURL);
   let cookingImg = $("<img>")
     .attr("src", cookingImgURL)
     .attr("alt", "image of chef cooking food in a pan")
@@ -214,7 +211,7 @@ function displayRecipes(url) {
         .attr("id", "recipe-div");
       let headerEl = $("<h6>").addClass("card-title").text(mealTitle).css({
         "font-weight": "bold",
-        "min-height": "90px",
+        "min-height": "135px",
       });
       // .css("color", "#FF7E33");
 

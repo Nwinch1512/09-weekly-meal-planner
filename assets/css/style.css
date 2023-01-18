@@ -44,6 +44,10 @@ body {
   display: none;
 }
 
+.nav-link:hover {
+  background-color: #ff7e33;
+}
+
 #search-criteria-form {
   padding: 30px;
 }
