@@ -31,24 +31,74 @@ let resultsContainer = $(".results-container");
 let currentPage = 0;
 let totalResults = 0;
 
-let masterchefImgQueryURL =
-  "https://api.giphy.com/v1/gifs/3oEjHC7al4GfnudR7y?api_key=NRE09HWQ0OyAMNBuz2iAsSYHuKKJkIV6";
+let giphyIDArray = [
+  "3oEjHC7al4GfnudR7y",
+  "14caftR0LRljqw",
+  "B27dmOubvXuEJ4SZOC",
+  "BMfotioKIPuXzsAOTC",
+  "wiH6vJTVhztio",
+  "lKM5hXavdPQ4oCK83q",
+  "xT1R9ytEYCBcebkMqA",
+  "Kctbxnwj5VK8SnVl2p",
+  "jmZGe1lFwchYx7mz4d",
+  "gLBMrYhpYrGdG",
+  "mei7oUWFvPTiG5rS7o",
+  "Fk18SR0a3C8bIS3hiC",
+  "3oeSAHYEIfgEkdCmmQ",
+  "gHVtUzINxjq4zhD4aP",
+  "ItpdDAhEQgjny",
+  "14qNb8qJ1ZgKVa",
+  "6utVufdWch09PxqXgV",
+  "xUPJPhnAzy86MR7WmI",
+  "26BkLTOQWzao2Cz6g",
+  "3KVQSE46qbEOhq2Jo9",
+  "3o85xG3XDsgCLuGC52",
+  "oFy0DysfL2nGG0W6Gr",
+  "1w37lihlJHnUqN0uQZ",
+  "4Y2q0AfB0L839Y4FKk",
+  "udsQXjWFrsmWRYMmUQ",
+  "M2SV3pKcFCR3HjSxCV",
+  "l3V0mIW2jr9m0rI8U",
+  "orq25CSNl1F0liVBsq",
+  "lrOi2I52gzCrgnDzvm",
+  "3o85xHAKCUZiIvRNPq",
+  "y4yJaxSPmxgEo",
+  "xT1R9yvTdWCFWw1sYg",
+  "CeWYtkEQC1cwU",
+  "WxvH7iuPzPnE2nlKJ6",
+  "UoEjs90HKfhC",
+  "0bhpbd32mKR1VOowyN",
+  "5n5CPcCgv8dkByKoxN",
+  "ZdTH8gnZM9GpqsHTon",
+  "Y3jd3RCJUD7YT92YpJ",
+  "3ofSBwU8flPjspnOj6",
+  "iYP63tTj3Aasw",
+  "uf6DXWUd2OrUk",
+  "X3E37CTy55jNK",
+  "d5E1LWg7MI2Z1ujm1E",
+  "Dfcp1BRY6zd9m",
+  "xUPGcuomRFMUcsB9nO",
+  "3n4Why9rClN10CyyZh",
+  "JUGvPIf2CE6vWam2OJ",
+  "3o7aD5lNmqChBB5yE0",
+  "jqSwm7pHRNtwZ2B1Fs",
+  "RvGJFfFGVzjgU0TT4P",
+];
 
-let masterchefHomeCooksGiphyID = "3oEjHC7al4GfnudR7y";
-// let cookingImgDiv = $(".cooking-image-div").css("display", "flex");
+let randomFoodGiphy = giphyIDArray[Math.floor(Math.random() * 50)];
+let giphyImgQueryURL = `https://api.giphy.com/v1/gifs/${randomFoodGiphy}?api_key=NRE09HWQ0OyAMNBuz2iAsSYHuKKJkIV6`;
 
 $.ajax({
-  url: masterchefImgQueryURL,
+  url: giphyImgQueryURL,
   method: "GET",
 }).then(function (response) {
-  console.log(response);
   let cookingImgURL = response.data.images.original.url;
   let cookingImgTitle = response.data.images.title;
-  console.log(cookingImgURL);
   let cookingImg = $("<img>")
     .attr("src", cookingImgURL)
     .attr("alt", "image of chef cooking food in a pan")
     .attr("title", cookingImgTitle)
+    .addClass("cooking-image")
     .css("margin-left", "auto")
     .css("margin-right", "auto")
     .css("padding", "20px");
@@ -107,7 +157,7 @@ function displayRecipes(url) {
       "font-weight": "bold",
       "background-color": "#9A031E",
       color: "#FEE1C7",
-      padding: "5px",
+      padding: "10px",
     });
 
   resultsContainer.append(resultsHeading);
@@ -166,10 +216,10 @@ function displayRecipes(url) {
         .css("background-color", "#6B654B")
         .css("min-height", "300px")
         .attr("id", "recipe-div");
-      let headerEl = $("<h6>")
-        .addClass("card-title")
-        .text(mealTitle)
-        .css("font-weight", "bold");
+      let headerEl = $("<h6>").addClass("card-title").text(mealTitle).css({
+        "font-weight": "bold",
+        "min-height": "135px",
+      });
       // .css("color", "#FF7E33");
 
       let recipeURLEL = $("<a href>").attr("href", `${recipeURL}`);
@@ -195,7 +245,10 @@ function displayRecipes(url) {
         .css("margin-bottom", "5px");
 
       // Favourite button div
-      let favouriteDiv = $("<div>");
+      let favouriteDiv = $("<div>").css({
+        "margin-bottom": "7px",
+        "margin-top": "5px",
+      });
 
       // Favourite button created and added to card here
       let buttonFavourite = $("<button>")
