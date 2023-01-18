@@ -316,12 +316,30 @@ function openModal(event) {
   event.preventDefault();
   modal.css("display", "block");
   iframeWebsite($(this).attr("url"));
+
+  // Set modal button to link to blog url
+  $(".btn-blog-link").attr("urlBlog", $(this).attr("url"))
+                        .text("Blog Link")
+                        .css("background-color", "#9A031E")
+                        .css("border-color", "#9A031E");
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
   modal.css("display", "none");
 };
+
+// Function to load blog page when blog link button is clicked
+$(document).on("click", ".btn-blog-link", openBlog);
+
+function openBlog(event) {
+      
+  console.log(`${$(this).attr("urlBlog")}`);
+  event.preventDefault();
+  var url = `${$(this).attr("urlBlog")}`;
+  var win = window.open(url, '_blank');
+  win.focus();
+}
 
 // When the user clicks anywhere outside of the modal, close it
 /* window.onclick = function(event) {
@@ -437,3 +455,4 @@ function nextPage(event) {
     searchRecipes();
   }
 }
+
