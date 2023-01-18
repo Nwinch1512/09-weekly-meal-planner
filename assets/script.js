@@ -318,9 +318,7 @@ function openModal(event) {
   iframeWebsite($(this).attr("url"));
 
   // Set modal button to link to blog url
-  
-    // add attributes to button including link
-    $(".btn-blog-link").attr("urlBlog", $(this).attr("url"))
+  $(".btn-blog-link").attr("urlBlog", $(this).attr("url"))
                         .text("Blog Link")
                         .css("background-color", "#9A031E")
                         .css("border-color", "#9A031E");
