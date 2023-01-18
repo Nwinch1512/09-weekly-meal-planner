@@ -2,7 +2,7 @@
 
 ## Description
 
-This repo contains all files related to the week 9 group project which was to create a meal planner.
+This repo contains all files related to the meal planner project created by NCS Coding.
 
 We were motivated to build the meal planner app to enable people to search for recipes based on requirements they can define. The app is inclusive to those with allergies or following restricted diets as it allows people to exclude specific ingredients.
 
@@ -52,6 +52,14 @@ Here is a link to the webpage:
 ## Credits
 
 JQuery and Bootstrap were used in this project. Food data was sourced from the Spoonacular API. The food giphys on the homepage were sourced from the Giphy API. We used coolors to develop a branding colour palette and Trello as a task management tool.
+
+See below for a list of contributors to the project:
+
+[Chris Gardner](https://github.com/AvocadoCoding/ "Visit Chris's github page")
+
+[Shahnoor Rashid](https://github.com/Shahnoor-Rashid/ "Visit Shahnoor's github page")
+
+[Benjamin Jervis](https://github.com/BenjaminJervis/ "Visit Shahnoor's github page")
 
 ## License
 

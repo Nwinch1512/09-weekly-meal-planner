@@ -31,9 +31,6 @@ let resultsContainer = $(".results-container");
 let currentPage = 0;
 let totalResults = 0;
 
-let masterchefHomeCooksGiphyID = "3oEjHC7al4GfnudR7y";
-// let cookingImgDiv = $(".cooking-image-div").css("display", "flex");
-
 let giphyIDArray = [
   "3oEjHC7al4GfnudR7y",
   "14caftR0LRljqw",
@@ -76,9 +73,19 @@ let giphyIDArray = [
   "Y3jd3RCJUD7YT92YpJ",
   "3ofSBwU8flPjspnOj6",
   "iYP63tTj3Aasw",
+  "uf6DXWUd2OrUk",
+  "X3E37CTy55jNK",
+  "d5E1LWg7MI2Z1ujm1E",
+  "Dfcp1BRY6zd9m",
+  "xUPGcuomRFMUcsB9nO",
+  "3n4Why9rClN10CyyZh",
+  "JUGvPIf2CE6vWam2OJ",
+  "3o7aD5lNmqChBB5yE0",
+  "jqSwm7pHRNtwZ2B1Fs",
+  "RvGJFfFGVzjgU0TT4P",
 ];
 
-let randomFoodGiphy = giphyIDArray[Math.floor(Math.random() * 40)];
+let randomFoodGiphy = giphyIDArray[Math.floor(Math.random() * 50)];
 let giphyImgQueryURL = `https://api.giphy.com/v1/gifs/${randomFoodGiphy}?api_key=NRE09HWQ0OyAMNBuz2iAsSYHuKKJkIV6`;
 
 $.ajax({
