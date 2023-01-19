@@ -218,4 +218,7 @@ body {
   .recipe-results {
     padding-left: 25px;
   }
+  #top-row {
+    display: none;
+  }
 } ;
